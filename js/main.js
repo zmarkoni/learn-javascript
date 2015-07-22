@@ -1,6 +1,4 @@
 var MYAPP = {}; //Create single global variable, it's becomes a NAMESPACE
-var MYAPP = {}; //Create single global variable, it's becomes a NAMESPACE
-var MYAPP = {}; //Create single global variable, it's becomes a NAMESPACE
 
 MYAPP.placeholder = document.getElementById('placeholder');
 

@@ -4,6 +4,17 @@ body {
 	font-size: 14px;
 }
 
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin-left: 10px;
+}
+ul li {
+  list-style: none;
+}
+
 .wrapper {
     width: 800px;
   	min-height: 500px;
@@ -18,10 +29,17 @@ h1 {
     text-align: center;
 }
 
+h3 {
+  margin-top: 20px;
+}
+
 #placeholder {
   clear: both;
   width:100%;
   float: left;
+  margin-top: 20px;
+  background: rgba(192, 192, 192, 0.28);
+  padding: 20px;
 }
 
 #placeholder .block{
