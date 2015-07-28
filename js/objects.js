@@ -336,5 +336,9 @@ Ove atribute ne koristimo u praksi ali dobro je da se znaju i setovani su na tru
 	Generally speaking, this is the default pattern to use for defining reference types.
 */
 
-
+//====================================================
+// Object’s Prototype Attribute and Prototype Property
+// The prototype attribute and prototype property of an object are critically important concepts to understand in JavaScript. 
+// Read my post JavaScript Prototype in Plain, Detailed Language for more. 
+// http://javascriptissexy.com/javascript-prototype-in-plain-detailed-language/
 
