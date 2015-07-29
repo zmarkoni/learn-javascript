@@ -279,5 +279,181 @@ var obj = {
 //print(obj.getName()); //”The Object"
 
 
+//=====  The Module Pattern  ======= pitanje u Vegi!!!	==================================
+
+/* =======Singletons
+	Singletons are objects of which there will only ever be one instance. 
+	Traditionally, singletons are created in JavaScript using object literal notation, as shown in the following example:
+	*/
+	var singleton = { 
+		name : value,
+		method : function () { 
+		//method code here
+	} 	
+};
+
+//The module pattern augments the basic singleton to allow for private variables and privileged methods
+var singleton = function(){
+	//private variables and functions var privateVariable = 10;
+	function privateFunction(){ 
+		return false;
+	}
+
+	//privileged/public methods and properties 
+	return {	//VAZNO
+
+		publicProperty: true, 
+
+		publicMethod : function(){
+			privateVariable++;
+			return privateFunction(); 
+		}
+	}; 
+}();
+
+/*
+The module pattern uses an anonymous function that returns an object. Inside of the anonymous function, 
+the private variables and functions are defined first. 
+After that, an object literal is returned as the function value. 
+That object literal contains only properties and methods that should be public.
+
+VAZNOOOO
+Since the object is defined inside the anonymous function, all of the public methods
+have access to the private variables and functions. 
+
+Essentially, the object literal defines the public interface for the singleton. 
+
+This can be useful when the singleton requires some sort of initialization and access to private variables
+*/
+
+var application = function(){
+	//private variables and functions 
+	var components = new Array();
+
+	//initialization
+	components.push(new BaseComponent());
+
+	//public interface 
+	return {
+			getComponentCount : function(){ 
+				return components.length;
+			},
+
+			registerComponent : function(component){ 
+				if (typeof component == “object”){
+					components.push(component); 
+				}
+			}
+	};
+}();
+
+/*
+In web applications, it’s quite common to have a singleton that manages application-level information. 
+This simple example creates an application object that manages components.
+When the object is first created, the private components array is created and a new instance of BaseComponent is added to its list. 
+(The code for BaseComponent is not important; it is used only to show initialization in the example.) 
+
+The getComponentCount() and registerComponent() methods are ==privileged methods=== with access to the components array. 
+The former simply returns the number of registered components, and the latter registers a new component.
+
+The module pattern is useful for cases like this, when a single object must be created and initialized 
+with some data and expose public methods that have access to private data. 
+Every singleton created in this manner is an instance of Object, since ultimately an object literal represents it. 
+
+This is inconsequential, because singletons are typically accessed globally instead of passed as arguments into a function, 
+which negates the need to use the instanceof operator to determine the object type.
+*/
+
+//===== The Module-Augmentation Pattern ========
+/*
+Another take on the module pattern calls for the augmentation of the object before returning it. 
+
+This pattern is useful when the singleton object needs to be an instance of a particular type but must be augmented 
+with additional properties and/or methods.
+
+If the application object in the module pattern example had to be an instance of BaseComponent, the following code could be used:
+*/
+
+var application = function(){
+	//private variables and functions 
+	var components = new Array();
+
+	//initialization
+	components.push(new BaseComponent());
+
+	//create a local copy of application	
+	var app = new BaseComponent();
+
+	//public interface 
+	app.getComponentCount : function(){ 
+		return components.length;
+	};
+
+	app.registerComponent : function(component){ 
+		if (typeof component == “object”){
+			components.push(component); 
+		}
+	};
+
+	//return it
+	return app;
+	
+}();
+
+/*
+In this rewritten version of the application singleton, the private variables are defined first, as in the previous example. 
+
+The main difference is the creation of a variable named app that is a new instance of BaseComponent. 
+
+This is the local version of what will become the application object. 
+
+Public methods are then added onto the app object to access the private variables. 
+
+The last step is to return the app object, which assigns it to application.
+*/
+
+
+//============ The following is a summary of function expressions: ==========
+/*
+
+➤ Function expressions are different from function declarations. Function declarations require names, while function expressions do not. 
+  A function expression without a name is also called an anonymous function.
+
+➤ With no definitive way to reference a function, recursive functions become more complicated.
+
+➤ Recursive functions running in nonstrict mode may use arguments.callee to call themselves recursively 
+  instead of using the function name, which may change.
+
+Closures are created when functions are defined inside other functions, allowing the closure access to all of the variables inside of the containing function, as follows:
+	
+	➤ Behind the scenes, the closure’s scope chain contains a variable object for itself, the containing function, and the global context.
+
+	➤ Typically a function’s scope and all of its variables are destroyed when the function has finished executing.
+	
+	➤ When a closure is returned from that function, its scope remains in memory until the closure no longer exists.
+
+Using closures, it’s possible to mimic block scoping in JavaScript, which doesn’t exist natively, as follows:
+	
+	➤ A function can be created and called immediately, executing the code within it but never leaving a reference to the function.
+
+	➤ This results in all of the variables inside the function being destroyed unless they are specifically 
+	  set to a variable in the containing scope.
+
+Closures can also be used to create private variables in objects, as follows:
+
+	➤ Even though JavaScript doesn’t have a formal concept of private object properties, 
+	  closures can be used to implement public methods that have access to variables defined within the containing scope.
+	
+	➤ Public methods that have access to private variables are called privileged methods.
+
+	➤ Privileged methods can be implemented on custom types using the constructor or prototype
+	  patterns and on singletons by using the module or module-augmentation patterns.
+
+
+Function expressions and closures are extremely powerful in JavaScript and can be used to accomplish many things. 
+Keep in mind that closures maintain extra scopes in memory, so overusing them may result in increased memory consumption.
+
+=========== END ===============
+*/
 
 
