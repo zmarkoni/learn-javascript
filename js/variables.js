@@ -150,4 +150,92 @@ Once an instance of MyObject is created, there is no way to access privateVariab
 you can do so only by way of publicMethod().
 */
 
+//===== privileged method ======
+
+/*
+Privileged methods can also be created by using a private scope to define the private variables or functions. 
+The pattern is as follows:
+*/
+(function(){
+	//private variables
+	var privateVariable = 10;
+
+	function privateFunction(){
+		print(privateVariable);
+	}
+
+	//constructor
+	MyObject = function(){};
+
+	//public and privilaeged methods
+	MyObject.prototype.publicMethod = function(){
+		privateVariable++;
+		return privateFunction();
+	};
+
+})();
+
+var obj = new MyObject();
+//obj.publicMethod();
+
+/*
+In this pattern, a private scope is created to enclose the constructor and its methods. 
+The private variables and functions are defined first, followed by the constructor and the public methods. 
+Public methods are defined on the prototype, as in the typical prototype pattern. 
+Note that this pattern defines the constructor not by using a function declaration but instead by using a function expression. 
+Function declarations always create local functions, which is undesirable in this case. 
+For this same reason, the var keyword is not used with MyObject. 
+
+VAZNO
+Remember: initializing an undeclared variable always creates a global variable, 
+so MyObject becomes global and available outside the private scope. 
+Also keep in mind that assigning to an undeclared variable in strict mode causes an error.
+*/
+
+/*
+The main difference between this pattern and the previous one is that private variables and functions are shared among instances. 
+Since the privileged method is defined on the prototype, all instances use that same function. 
+The privileged method, being a closure, always holds a reference to the containing scope. Consider the following:
+*/
+
+(function(){
+	var name = "";
+
+	Person = function(value){ 
+		name = value;
+	};
+
+	Person.prototype.getName = function(){ 
+		print(name);
+	};
+
+	Person.prototype.setName = function (value){ 
+		name = value;
+	}; 
+})();
+
+var person1 = new Person('Nicholas'); 
+//person1.getName(); //”Nicholas” 
+
+//person1.setName('Greg'); 
+//person1.getName(); //”Greg”
+
+
+var person2 = new Person('Michael'); 
+//person1.getName(); //”Michael” //GRESKA - zbog toga sto The privileged method, being a closure, always holds a reference to the containing scope
+//person2.getName(); //”Michael”
+
+/*
+The Person constructor in this example has access to the private variable name, as do the getName() and setName() methods. 
+Using this pattern, the name variable becomes static and will be used among all instances. 
+This means calling setName() on one instance affects all other instances. 
+
+Calling setName() or creating a new Person instance sets the name variable to a new value. 
+This causes all instances to return the same value.
+Creating static private variables in this way allows for better code reuse through prototypes, 
+although each instance doesn’t have its own private variable. Ultimately, 
+the decision to use instance or static private variables needs to be based on your individual requirements.
+*/
+
+
 
