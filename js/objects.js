@@ -72,14 +72,15 @@ Ove atribute ne koristimo u praksi ali dobro je da se znaju i setovani su na tru
 	// Konstruktor je funkcija koja se koristi za inicijalizovanje novih objekata.
 	//Koristi se === new === kljucna rec za pozivanje konstruktora.
 
-	var mango = new Object();
-	mango.color = "blue",
-	mango.shape = "round",
-	mango.sweetness = 8,
+	var Mango = new Object();
+	Mango.color = "blue",
+	Mango.shape = "round",
+	Mango.sweetness = 8,
 
-	mango.howSweetAmI = function () {
+	Mango.howSweetAmI = function () {
 		console.log ("Hmm mmm I am good");
 	}
+
 
 //======	Paterni za kreiranje objekata: 	======
 
@@ -113,7 +114,7 @@ Ove atribute ne koristimo u praksi ali dobro je da se znaju i setovani su na tru
 	 	//The only difference between constructor functions and other functions is the way in which they are called.
 	 	//Example:
 			 	//use as a constructor
-				var person = new Person1("Nicholas", "Software Engineer", 29);
+			 	var person = new Person1("Nicholas", "Software Engineer", 29);
 				//person.showNanme(); //"Nicholas"
 
 				//call as a function
@@ -153,7 +154,7 @@ Ove atribute ne koristimo u praksi ali dobro je da se znaju i setovani su na tru
 	//======	Prototype patern za kreiranje objekata ====
 
 	//The benefit of using the prototype is that all of its properties and methods are shared among object instances
-	function Person2(){}
+	function Person2(){};
 	Person2.prototype.name = "Zoran";
 	Person2.prototype.lastname = "Markovic";
 	Person2.prototype.age = 31;
@@ -227,7 +228,7 @@ Ove atribute ne koristimo u praksi ali dobro je da se znaju i setovani su na tru
 
 	The hybrid constructor/prototype pattern is the most widely used and accepted practice for defining custom reference types in ECMAScript.
 	Generally speaking, this is the default pattern to use for defining reference types.
-*/
+	*/
 
 //====================================================
 // Object’s Prototype Attribute and Prototype Property
@@ -286,11 +287,11 @@ Ove atribute ne koristimo u praksi ali dobro je da se znaju i setovani su na tru
     //==== IN operator return TRUE if a property of the given name exists on the object instance or prototype,
     //It’s possible to determine if the property of an object exists on the prototype
     //by combining a call to hasOwnProperty() with the in operator like this:
-    	function hasPrototypeProperty(object, name){
-    		return !object.hasOwnProperty(name) && (name in object);
-    	}
+    function hasPrototypeProperty(object, name){
+    	return !object.hasOwnProperty(name) && (name in object);
+    }
 
-    	var person3 = new Person3();
+    var person3 = new Person3();
 		//alert(hasPrototypeProperty(person3, 'name'));  //true
 
 		person3.name = 'Bojan';
@@ -318,7 +319,7 @@ Ove atribute ne koristimo u praksi ali dobro je da se znaju i setovani su na tru
 		name : 'Nicholas',
 		age : 29,
 		job : 'Software Engineer',
-	    friends : ['Shelby', 'Court'],
+		friends : ['Shelby', 'Court'],
 		sayName : function () {
 			alert(this.name);
 		}
@@ -344,3 +345,66 @@ Ove atribute ne koristimo u praksi ali dobro je da se znaju i setovani su na tru
 	Read my post JavaScript Prototype in Plain, Detailed Language for more. 
 	http://javascriptissexy.com/javascript-prototype-in-plain-detailed-language/
 	*/
+
+	//Rezime
+
+//Object literal
+var Person = {
+	name:"Zoran",
+	age:27,
+	showPerson:function(){
+		print(this.name + ", " + this.age);
+	}
+}
+
+var p = Person;
+//    p.showPerson();
+
+//Constructor
+var Person1 = new Object();
+Person1.name = "Zoki";
+Person1.age = 30;
+Person1.showPerson = function(){
+	print(this.name + ", " + this.age);
+}
+
+var p1 = Person1;
+//    p1.showPerson();
+
+
+//Function Constructor
+function Person2(name, age){
+	this.name = name,
+	this.age = age,
+	this.showPerson = function(){
+		print(this.name + ", " + this.age);
+	}
+}
+
+var p2 = new Person2("Jelena",29);
+    //p2.showPerson();
+
+//Function Prototype
+function Person3() {};
+Person3.prototype.name = "Jeka";
+Person3.prototype.age = 28;
+Person3.prototype.showPerson = function(){
+	print(this.name + ", " + this.age);
+}
+
+var p3 = new Person3();
+        //p3.showPerson();
+
+//Function Constructor/Prototpe patern = the BEST
+
+function Person4(name, age){
+	this.name = name,
+	this.age = age
+}
+
+Person4.prototype.showPerson = function(){
+	print(this.name + ", " + this.age);
+};
+
+var p4 = new Person4("Sara",20);
+p4.showPerson();
