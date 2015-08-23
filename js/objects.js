@@ -386,8 +386,10 @@ var p2 = new Person2("Jelena",29);
 
 //Function Prototype
 function Person3() {};
+
 Person3.prototype.name = "Jeka";
 Person3.prototype.age = 28;
+
 Person3.prototype.showPerson = function(){
 	print(this.name + ", " + this.age);
 }
@@ -407,4 +409,51 @@ Person4.prototype.showPerson = function(){
 };
 
 var p4 = new Person4("Sara",20);
-p4.showPerson();
+//p4.showPerson();
+
+
+//========================================================================================
+//=======Understanding the difference between Object.create() and new SomeFunction()======
+//========================================================================================
+
+// Very simply said, new X is Object.create(X.prototype) with additionally running the
+// constructor function. (And giving the constructor the chance to return the actual object
+// that should be the result of the expression instead of this.)
+
+//var foo = new Foo();
+//var foo = Object.create(Foo.prototype);
+/*
+1) with new keyword there are two things to note;
+
+	a) function is used as a constructor
+
+	b) function.prototype object is passed to the __proto__ property ... or where __proto__ is not supported, it is the second place where the new object looks to find properties
+
+2) with Object.create(obj.prototype) you are constructing an object (obj.prototype) and passing it to the intended object ..with the difference that now new object's __proto__ is also pointing to obj.prototype (please ref ans by xj9 for that)
+*/
+
+
+//https://nodeway.wordpress.com/2015/02/16/javascript-prototype/
+
+var Man = function(run){
+	this.run = run;
+}
+
+var Bird = function(fly){
+	this.fly = fly;
+}
+
+//First we created a speial Man object
+var man = new Man("run Zoki");
+Bird.prototype = man; // nasledjuje propertije od man
+
+var birdman = new Bird('fly Zoki');
+//now you can see birdman has both abilities running and flying.
+print(birdman.fly); // “fly my birdman”,
+print(birdman.run); //“run Michael Keaton“
+
+
+
+
+
+

@@ -1,3 +1,5 @@
+//javascript function declaration vs function expression ?
+
 //Regular function declaration
 function sayHi(){
 	alert("Hi!");
@@ -6,16 +8,16 @@ function sayHi(){
 //sayHi();
 
 //Function expressions
-var functionName = function(arg0, arg1, arg2){ 
+var functionName = function(arg0, arg1, arg2){
 	print(arg0 + ' ' + arg1 + ' ' + arg2);
 };
 //call function
 //functionName(1,2,3);
 
 /*
-	This pattern of function expression looks like a normal variable assignment. 
-	A function is created and assigned to the variable functionName. 
-	The created function is considered to be an anonymous function, 
+	This pattern of function expression looks like a normal variable assignment.
+	A function is created and assigned to the variable functionName.
+	The created function is considered to be an anonymous function,
 	because it has no identifier after the function keyword.
 	This means the name property is the empty string.
 
@@ -32,14 +34,14 @@ var myObj = {
 		//this.value = 0 i dalje VAZNO!!!
 		this.value += typeof inc === 'number' ? inc : 1;
 	}
-	
-};//Objekat se zavrsava tackom i zarezom uvek, a metod ne 
+
+};//Objekat se zavrsava tackom i zarezom uvek, a metod ne
 
 //myObj.increment(1);
 myObj.increment(11);
 //print(myObj.value);
 
-//The Function invocation pattern		
+//The Function invocation pattern
 
 //dodajem novi metod
 myObj.double = function () {
@@ -48,16 +50,16 @@ myObj.double = function () {
 	//return add(this.value, this.value);
 
 	var helper = function () {
-	    //Unutrasnja funkcija vidi this kao globalnu	
+	    //Unutrasnja funkcija vidi this kao globalnu
 	    //this.value = add(this.value, this.value); ne moze
 	    that.value = that.value + that.value;
 	};
 
 	helper(); // Invoke helper as a function.
-};	
+};
 
 
-// Invoke double as a method.				
+// Invoke double as a method.
 myObj.double();
 //print(myObj.value);
 
@@ -88,14 +90,14 @@ var try_it = function () {
 
 // =============== RECURSION =============================================
 /*
-In this code, a named function expression f() is created and assigned to the variable factorial. 
-The name f remains the same even if the function is assigned to another variable, 
-so the recursive call will always execute correctly. 
+In this code, a named function expression f() is created and assigned to the variable factorial.
+The name f remains the same even if the function is assigned to another variable,
+so the recursive call will always execute correctly.
 This pattern works in both nonstrict mode and strict mode.
 */
-var factorial = (function f(num){ 
+var factorial = (function f(num){
 	if (num <= 1){
-		return 1; 
+		return 1;
 	} else {
 		return num * f(num-1);
 	}
@@ -103,16 +105,16 @@ var factorial = (function f(num){
 
 
 // ===============  Closure	 =============================================
-//Closures are functions that have access to variables from another function’s scope. 
+//Closures are functions that have access to variables from another function’s scope.
 //This is often accomplished by creating a function inside a function
 
-/*When a function is called, an execution context is created, and its scope chain is created. 
-The activation object for the function is initialized with values for arguments and any named arguments. 
+/*When a function is called, an execution context is created, and its scope chain is created.
+The activation object for the function is initialized with values for arguments and any named arguments.
 
-The outer function’s activation object is the second object in the scope chain. 
+The outer function’s activation object is the second object in the scope chain.
 
 This process continues for all containing functions until the scope chain terminates with the global execution context.
-As the function executes, variables are looked up in the scope chain for the reading and writing of values. 
+As the function executes, variables are looked up in the scope chain for the reading and writing of values.
 */
 var myObject = function() {
 	var value = 0;
@@ -129,35 +131,35 @@ var myObject = function() {
 
 
 
-//Whenever a variable is accessed inside a function, the scope chain is searched for a variable with the given name. 
-//Once the function has completed, the local activation object is destroyed, leaving only the global scope in memory. 
+//Whenever a variable is accessed inside a function, the scope chain is searched for a variable with the given name.
+//Once the function has completed, the local activation object is destroyed, leaving only the global scope in memory.
 //Closures, however, behave differently.
-//A function that is defined inside another function adds the containing function’s activation object into its scope chain. 
+//A function that is defined inside another function adds the containing function’s activation object into its scope chain.
 //So, in createComparisonFunction(), the anonymous function’s scope chain actually contains a reference to the activation object for createComparisonFunction();
 
 function createComparisonFunction(propertyName) {
 	return function(object1, object2){
 		var value1 = object1[propertyName];
 		var value2 = object2[propertyName];
-		
-		if (value1 < value2){ 
+
+		if (value1 < value2){
 			return -1;
-		} else if (value1 > value2){ 
+		} else if (value1 > value2){
 			return 1;
-		} else { 
+		} else {
 			return 0;
-		} 
+		}
 	};
 }
 
 /*
-When the anonymous function is returned from createComparisonFunction(), 
+When the anonymous function is returned from createComparisonFunction(),
 its scope chain has been initialized to contain the =activation object= from createComparisonFunction()
-and the =global variable object=. This gives the anonymous function access to all of the variables from createComparisonFunction(). 
+and the =global variable object=. This gives the anonymous function access to all of the variables from createComparisonFunction().
 
-Another interesting side effect is that the =activation object= from createComparisonFunction() cannot be destroyed once the function finishes executing, 
-because a reference still exists in the anonymous function’s scope chain. 
-After createComparisonFunction() completes, the scope chain for its execution context is destroyed, 
+Another interesting side effect is that the =activation object= from createComparisonFunction() cannot be destroyed once the function finishes executing,
+because a reference still exists in the anonymous function’s scope chain.
+After createComparisonFunction() completes, the scope chain for its execution context is destroyed,
 but its =activation object= will remain in memory until the anonymous function is destroyed, as in the following:
 */
 
@@ -167,35 +169,35 @@ var compareNames = createComparisonFunction('name');
 //call function
 var result = compareNames({ name: 'Nicholas' }, { name: 'Greg' });
 //print(result);
-//dereference function - memory can now be reclaimed 
+//dereference function - memory can now be reclaimed
 compareNames = null;
 //print(result);
 
 //=====  Closures and variables	=====
 /*
-There is one notable side effect of this scope-chain configuration. 
-The closure always gets the last value of any variable from the containing function. 
-Remember that the closure stores a reference to the entire variable object, 
-not just to a particular variable. 
+There is one notable side effect of this scope-chain configuration.
+The closure always gets the last value of any variable from the containing function.
+Remember that the closure stores a reference to the entire variable object,
+not just to a particular variable.
 This issue is illustrated clearly in the following example:*/
-function createFunctions(){ 
+function createFunctions(){
 	var result = new Array();
-	
-	for (var i=0; i < 10; i++){ 
+
+	for (var i=0; i < 10; i++){
 		result[i] = function(){
-			return i; 
+			return i;
 		};
 	}
-	return result; 
+	return result;
 }
 
 /*
-This function returns an array of functions. It seems that each function should just return the value of its index, 
-so the function in position 0 returns 0, the function in position 1 returns 1, and so on. 
-In reality, every function returns 10. Since each function has the createFunctions() activation object in its scope chain, 
-they are all referring to the same variable, i. 
-When createFunctions() finishes running, the value of i is 10, and since every function references the same variable object in which i exists, 
-the value of i inside each function is 10. 
+This function returns an array of functions. It seems that each function should just return the value of its index,
+so the function in position 0 returns 0, the function in position 1 returns 1, and so on.
+In reality, every function returns 10. Since each function has the createFunctions() activation object in its scope chain,
+they are all referring to the same variable, i.
+When createFunctions() finishes running, the value of i is 10, and since every function references the same variable object in which i exists,
+the value of i inside each function is 10.
 You can, however, force the closures to act appropriately by creating another anonymous function, as follows:
 */
 
@@ -213,23 +215,23 @@ function createFunction(){
 }
 
 /*
-With this version of createFunctions(), each function returns a different number. 
-Instead of assigning a closure directly into the array, an anonymous function is defined and called immediately. 
-The anonymous function has one argument, num, which is the number that the result function should return. 
-The variable = i = is passed in as an argument to the anonymous function. 
-Since function arguments are passed by value, the current value of i is copied into the argument num. 
-Inside the anonymous function, a closure that accesses num is created and returned. 
+With this version of createFunctions(), each function returns a different number.
+Instead of assigning a closure directly into the array, an anonymous function is defined and called immediately.
+The anonymous function has one argument, num, which is the number that the result function should return.
+The variable = i = is passed in as an argument to the anonymous function.
+Since function arguments are passed by value, the current value of i is copied into the argument num.
+Inside the anonymous function, a closure that accesses num is created and returned.
 Now each function in the result array has its own copy of num and thus can return separate numbers.
 */
 
 //=====  this  ==== Object in clousers =====
 
-/*Using the this object inside closures introduces some complex behaviors. 
-The =this= object is bound at runtime based on the context in which a function is executed: 
-	when used inside global functions, =this= is equal to window in nonstrict mode and 
-	undefined in strict mode, whereas =this= is equal to the object when called as an object method. 
+/*Using the this object inside closures introduces some complex behaviors.
+The =this= object is bound at runtime based on the context in which a function is executed:
+	when used inside global functions, =this= is equal to window in nonstrict mode and
+	undefined in strict mode, whereas =this= is equal to the object when called as an object method.
 
-Anonymous functions are not bound to an object in this context, meaning the =this= object points to window 
+Anonymous functions are not bound to an object in this context, meaning the =this= object points to window
 unless executing in strict mode (where this is undefined).
 */
 
@@ -282,132 +284,132 @@ var obj = {
 //=====  The Module Pattern  ======= pitanje u Vegi!!!	==================================
 
 /* =======Singletons
-	Singletons are objects of which there will only ever be one instance. 
+	Singletons are objects of which there will only ever be one instance.
 	Traditionally, singletons are created in JavaScript using object literal notation, as shown in the following example:
 	*/
-	var singleton = { 
+	var singleton = {
 		name : value,
-		method : function () { 
+		method : function () {
 		//method code here
-	} 	
+	}
 };
 
 //The module pattern augments the basic singleton to allow for private variables and privileged methods
 var singleton = function(){
 	//private variables and functions var privateVariable = 10;
-	function privateFunction(){ 
+	function privateFunction(){
 		return false;
 	}
 
-	//privileged/public methods and properties 
+	//privileged/public methods and properties
 	return {	//VAZNO
 
-		publicProperty: true, 
+		publicProperty: true,
 
 		publicMethod : function(){
 			privateVariable++;
-			return privateFunction(); 
+			return privateFunction();
 		}
-	}; 
+	};
 }();
 
 /*
-The module pattern uses an anonymous function that returns an object. Inside of the anonymous function, 
-the private variables and functions are defined first. 
-After that, an object literal is returned as the function value. 
+The module pattern uses an anonymous function that returns an object. Inside of the anonymous function,
+the private variables and functions are defined first.
+After that, an object literal is returned as the function value.
 That object literal contains only properties and methods that should be public.
 
 VAZNOOOO
 Since the object is defined inside the anonymous function, all of the public methods
-have access to the private variables and functions. 
+have access to the private variables and functions.
 
-Essentially, the object literal defines the public interface for the singleton. 
+Essentially, the object literal defines the public interface for the singleton.
 
 This can be useful when the singleton requires some sort of initialization and access to private variables
 */
 
 var application = function(){
-	//private variables and functions 
+	//private variables and functions
 	var components = new Array();
 
 	//initialization
 	components.push(new BaseComponent());
 
-	//public interface 
+	//public interface
 	return {
-			getComponentCount : function(){ 
+			getComponentCount : function(){
 				return components.length;
 			},
 
-			registerComponent : function(component){ 
+			registerComponent : function(component){
 				if (typeof component == “object”){
-					components.push(component); 
+					components.push(component);
 				}
 			}
 	};
 }();
 
 /*
-In web applications, it’s quite common to have a singleton that manages application-level information. 
+In web applications, it’s quite common to have a singleton that manages application-level information.
 This simple example creates an application object that manages components.
-When the object is first created, the private components array is created and a new instance of BaseComponent is added to its list. 
-(The code for BaseComponent is not important; it is used only to show initialization in the example.) 
+When the object is first created, the private components array is created and a new instance of BaseComponent is added to its list.
+(The code for BaseComponent is not important; it is used only to show initialization in the example.)
 
-The getComponentCount() and registerComponent() methods are ==privileged methods=== with access to the components array. 
+The getComponentCount() and registerComponent() methods are ==privileged methods=== with access to the components array.
 The former simply returns the number of registered components, and the latter registers a new component.
 
-The module pattern is useful for cases like this, when a single object must be created and initialized 
-with some data and expose public methods that have access to private data. 
-Every singleton created in this manner is an instance of Object, since ultimately an object literal represents it. 
+The module pattern is useful for cases like this, when a single object must be created and initialized
+with some data and expose public methods that have access to private data.
+Every singleton created in this manner is an instance of Object, since ultimately an object literal represents it.
 
-This is inconsequential, because singletons are typically accessed globally instead of passed as arguments into a function, 
+This is inconsequential, because singletons are typically accessed globally instead of passed as arguments into a function,
 which negates the need to use the instanceof operator to determine the object type.
 */
 
 //===== The Module-Augmentation Pattern ========
 /*
-Another take on the module pattern calls for the augmentation of the object before returning it. 
+Another take on the module pattern calls for the augmentation of the object before returning it.
 
-This pattern is useful when the singleton object needs to be an instance of a particular type but must be augmented 
+This pattern is useful when the singleton object needs to be an instance of a particular type but must be augmented
 with additional properties and/or methods.
 
 If the application object in the module pattern example had to be an instance of BaseComponent, the following code could be used:
 */
 
 var application = function(){
-	//private variables and functions 
+	//private variables and functions
 	var components = new Array();
 
 	//initialization
 	components.push(new BaseComponent());
 
-	//create a local copy of application	
+	//create a local copy of application
 	var app = new BaseComponent();
 
-	//public interface 
-	app.getComponentCount : function(){ 
+	//public interface
+	app.getComponentCount : function(){
 		return components.length;
 	};
 
-	app.registerComponent : function(component){ 
+	app.registerComponent : function(component){
 		if (typeof component == “object”){
-			components.push(component); 
+			components.push(component);
 		}
 	};
 
 	//return it
 	return app;
-	
+
 }();
 
 /*
-In this rewritten version of the application singleton, the private variables are defined first, as in the previous example. 
+In this rewritten version of the application singleton, the private variables are defined first, as in the previous example.
 
-The main difference is the creation of a variable named app that is a new instance of BaseComponent. 
+The main difference is the creation of a variable named app that is a new instance of BaseComponent.
 
-This is the local version of what will become the application object. 
+This is the local version of what will become the application object.
 
-Public methods are then added onto the app object to access the private variables. 
+Public methods are then added onto the app object to access the private variables.
 
 The last step is to return the app object, which assigns it to application.
 */
@@ -416,41 +418,41 @@ The last step is to return the app object, which assigns it to application.
 //============ The following is a summary of function expressions: ==========
 /*
 
-➤ Function expressions are different from function declarations. Function declarations require names, while function expressions do not. 
+➤ Function expressions are different from function declarations. Function declarations require names, while function expressions do not.
   A function expression without a name is also called an anonymous function.
 
 ➤ With no definitive way to reference a function, recursive functions become more complicated.
 
-➤ Recursive functions running in nonstrict mode may use arguments.callee to call themselves recursively 
+➤ Recursive functions running in nonstrict mode may use arguments.callee to call themselves recursively
   instead of using the function name, which may change.
 
 Closures are created when functions are defined inside other functions, allowing the closure access to all of the variables inside of the containing function, as follows:
-	
+
 	➤ Behind the scenes, the closure’s scope chain contains a variable object for itself, the containing function, and the global context.
 
 	➤ Typically a function’s scope and all of its variables are destroyed when the function has finished executing.
-	
+
 	➤ When a closure is returned from that function, its scope remains in memory until the closure no longer exists.
 
 Using closures, it’s possible to mimic block scoping in JavaScript, which doesn’t exist natively, as follows:
-	
+
 	➤ A function can be created and called immediately, executing the code within it but never leaving a reference to the function.
 
-	➤ This results in all of the variables inside the function being destroyed unless they are specifically 
+	➤ This results in all of the variables inside the function being destroyed unless they are specifically
 	  set to a variable in the containing scope.
 
 Closures can also be used to create private variables in objects, as follows:
 
-	➤ Even though JavaScript doesn’t have a formal concept of private object properties, 
+	➤ Even though JavaScript doesn’t have a formal concept of private object properties,
 	  closures can be used to implement public methods that have access to variables defined within the containing scope.
-	
+
 	➤ Public methods that have access to private variables are called privileged methods.
 
 	➤ Privileged methods can be implemented on custom types using the constructor or prototype
 	  patterns and on singletons by using the module or module-augmentation patterns.
 
 
-Function expressions and closures are extremely powerful in JavaScript and can be used to accomplish many things. 
+Function expressions and closures are extremely powerful in JavaScript and can be used to accomplish many things.
 Keep in mind that closures maintain extra scopes in memory, so overusing them may result in increased memory consumption.
 
 =========== END ===============
