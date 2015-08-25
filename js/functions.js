@@ -1,5 +1,9 @@
-//javascript function declaration vs function expression ?
 
+
+// =============== FUNCTIONS =============================================
+
+//Function declaration vs function expression ?
+//See bottom
 //Regular function declaration
 function sayHi(){
 	alert("Hi!");
@@ -22,9 +26,7 @@ var functionName = function(arg0, arg1, arg2){
 	This means the name property is the empty string.
 
 	The ability to create functions for assignment to variables also allows you to return functions as the value of other functions.
-	*/
-
-// =============== FUNCTIONS =============================================
+*/
 
 // THE METHOD INVOCATION PATTERN
 var myObj = {
