@@ -237,7 +237,5 @@ although each instance doesn’t have its own private variable. Ultimately,
 the decision to use instance or static private variables needs to be based on your individual requirements.
 */
 
-//============= Understanding Scope and Context ==============
-
 
 

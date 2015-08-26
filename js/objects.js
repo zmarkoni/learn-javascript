@@ -416,20 +416,16 @@ var p4 = new Person4("Sara",20);
 //=======Understanding the difference between Object.create() and new SomeFunction()======
 //========================================================================================
 
-// Very simply said, new X is Object.create(X.prototype) with additionally running the
-// constructor function. (And giving the constructor the chance to return the actual object
-// that should be the result of the expression instead of this.)
-
-//var foo = new Foo();
-//var foo = Object.create(Foo.prototype);
 /*
-1) with new keyword there are two things to note;
+What is prototype ?
 
-	a) function is used as a constructor
+{Prototype} (Prototype with curly braces is hidden link ) is a hidden link to an object which is not accessible directly to the user.That hidden link also an object. So, There are three ways to create an object in JavaScript  and each have their way of creating prototype link.
 
-	b) function.prototype object is passed to the __proto__ property ... or where __proto__ is not supported, it is the second place where the new object looks to find properties
+1. Object literals – {}; – If we creates an object by using object literals than Object.prototype link will be automatically created.Here we don’t have ability to select our {prototype} link, it will always points to Object.prototype.
 
-2) with Object.create(obj.prototype) you are constructing an object (obj.prototype) and passing it to the intended object ..with the difference that now new object's __proto__ is also pointing to obj.prototype (please ref ans by xj9 for that)
+2. Object.create() method – If we creates an object by using Object.create() method than we have ability to choose prototype property of our object. By passing object as parameter of create method we can select prototype of our created object .We can also create an object without {prototype} property. For Example : var obj = Object.create(Object.prototype);  Here obj {prototype} is Object.prototype. var obj = Object.create(null); Here obj {prototype} is null.
+
+3. Constructor way  new Const() – If we are creating our object by using any constructor function than Constructor prototype will become our object {prototype}. In JavaScript functions are special kind of objects, apart from {prototype} hidden link they also have one more prototype property which is accessible for user. A simple function structure will look like the following Images:
 */
 
 
