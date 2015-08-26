@@ -1,5 +1,3 @@
-
-
 // =============== FUNCTIONS =============================================
 
 //Function declaration vs function expression ?
@@ -26,35 +24,34 @@ var functionName = function(arg0, arg1, arg2){
 	This means the name property is the empty string.
 
 	The ability to create functions for assignment to variables also allows you to return functions as the value of other functions.
-*/
+	*/
 
 // THE METHOD INVOCATION PATTERN
 var myObj = {
 	value: 0, //property
 	increment: function (inc) {
-		//var value = 10; // value = 10 - ne cita je
-		//this.value = 0 i dalje VAZNO!!!
+		var value = 10; // value = 10 - ne cita je
+		//this.value = 0 i dalje VAZNO//!!!
 		this.value += typeof inc === 'number' ? inc : 1;
+		return this.return_value(this.value); //pozivam metodu odozdo
+	},
+	return_value : function (result) {
+		return print(result);
+		//return value;
 	}
+}; //Objekat se zavrsava tackom i zarezom uvek, a metod ne
 
-};//Objekat se zavrsava tackom i zarezom uvek, a metod ne
+// myObj.increment(1);
+// myObj.increment(10);
 
-//myObj.increment(1);
-myObj.increment(11);
-//print(myObj.value);
-
-//The Function invocation pattern
-
-//dodajem novi metod
 myObj.double = function () {
 	var that = this; // Workaround.
 	//Ovde bi radilo
-	//return add(this.value, this.value);
-
+	//return increment(this.value, this.value);
 	var helper = function () {
 	    //Unutrasnja funkcija vidi this kao globalnu
-	    //this.value = add(this.value, this.value); ne moze
-	    that.value = that.value + that.value;
+	    //this.value = increment(this.value, this.value); ne moze
+	    that.value = myObj.increment(that.value, that.value);
 	};
 
 	helper(); // Invoke helper as a function.
@@ -62,55 +59,32 @@ myObj.double = function () {
 
 
 // Invoke double as a method.
-myObj.double();
-//print(myObj.value);
+//myObj.double(5);
 
-// =============== EXCEPTIONS =============================================
+//Constructor invocation pattern
+	var Quo = function (string) {
+	     this.status = string;
+	};
 
-var add = function (a,b) {
-	if(typeof a !== "number" || typeof b !== 'number'){
-		throw {
-			name: "TypeError",
-			message: 'ADD needs numbers!'
-		};
-	}
-	var result = a + b;
-	print(result);
-}
+	//Give all instances of Quo a public method called get_status
+	Quo.prototype.get_status = function () {
+		return this.status;
+	};
 
-var try_it = function () {
-	try {
-		add('one','two');
-		// add(1, 2);
-	}catch(e) {
-		print(e.name);
-		print(e.message);
-	}
-}
+	// Make an instance of Quo.
+	var myQuo = new Quo("confused");
+	//print(myQuo.get_status()); // confused
 
-// try_it();
 
-// =============== RECURSION =============================================
-/*
-In this code, a named function expression f() is created and assigned to the variable factorial.
-The name f remains the same even if the function is assigned to another variable,
-so the recursive call will always execute correctly.
-This pattern works in both nonstrict mode and strict mode.
-*/
-var factorial = (function f(num){
-	if (num <= 1){
-		return 1;
-	} else {
-		return num * f(num-1);
-	}
-});
 
 
 // ===============  Closure	 =============================================
+
 //Closures are functions that have access to variables from another function’s scope.
 //This is often accomplished by creating a function inside a function
 
-/*When a function is called, an execution context is created, and its scope chain is created.
+/*
+When a function is called, an execution context is created, and its scope chain is created.
 The activation object for the function is initialized with values for arguments and any named arguments.
 
 The outer function’s activation object is the second object in the scope chain.
@@ -130,8 +104,6 @@ var myObject = function() {
 		}
 	}
 }(); // uglaste zagrade na kraju, znace da se varijabli dodeljuje rezultat funkcije a ne funkcija
-
-
 
 //Whenever a variable is accessed inside a function, the scope chain is searched for a variable with the given name.
 //Once the function has completed, the local activation object is destroyed, leaving only the global scope in memory.
@@ -175,7 +147,7 @@ var result = compareNames({ name: 'Nicholas' }, { name: 'Greg' });
 compareNames = null;
 //print(result);
 
-//=====  Closures and variables	=====
+//=====  Closures and variables	SCOPE =====
 /*
 There is one notable side effect of this scope-chain configuration.
 The closure always gets the last value of any variable from the containing function.
@@ -283,6 +255,19 @@ var obj = {
 //print(obj.getName()); //”The Object"
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //=====  The Module Pattern  ======= pitanje u Vegi!!!	==================================
 
 /* =======Singletons
@@ -290,7 +275,7 @@ var obj = {
 	Traditionally, singletons are created in JavaScript using object literal notation, as shown in the following example:
 	*/
 	var singleton = {
-		name : value,
+		//name : value,
 		method : function () {
 		//method code here
 	}
@@ -330,6 +315,8 @@ Essentially, the object literal defines the public interface for the singleton.
 This can be useful when the singleton requires some sort of initialization and access to private variables
 */
 
+function BaseComponent(){}
+
 var application = function(){
 	//private variables and functions
 	var components = new Array();
@@ -339,15 +326,15 @@ var application = function(){
 
 	//public interface
 	return {
-			getComponentCount : function(){
-				return components.length;
-			},
+		getComponentCount : function(){
+			return components.length;
+		},
 
-			registerComponent : function(component){
-				if (typeof component == “object”){
-					components.push(component);
-				}
+		registerComponent : function(component){
+			if (typeof component == 'object'){
+				components.push(component);
 			}
+		}
 	};
 }();
 
@@ -389,12 +376,12 @@ var application = function(){
 	var app = new BaseComponent();
 
 	//public interface
-	app.getComponentCount : function(){
+	app.getComponentCount = function() {
 		return components.length;
 	};
 
-	app.registerComponent : function(component){
-		if (typeof component == “object”){
+	app.registerComponent = function(component){
+		if (typeof component == 'object'){
 			components.push(component);
 		}
 	};
@@ -459,5 +446,46 @@ Keep in mind that closures maintain extra scopes in memory, so overusing them ma
 
 =========== END ===============
 */
+
+
+// =============== EXCEPTIONS =============================================
+
+var add = function (a,b) {
+	if(typeof a !== "number" || typeof b !== 'number'){
+		throw {
+			name: "TypeError",
+			message: 'ADD needs numbers!'
+		};
+	}
+	var result = a + b;
+	print(result);
+}
+
+var try_it = function () {
+	try {
+		add('one','two');
+		// add(1, 2);
+	}catch(e) {
+		print(e.name);
+		print(e.message);
+	}
+}
+
+//try_it();
+
+// =============== RECURSION =============================================
+/*
+In this code, a named function expression f() is created and assigned to the variable factorial.
+The name f remains the same even if the function is assigned to another variable,
+so the recursive call will always execute correctly.
+This pattern works in both nonstrict mode and strict mode.
+*/
+var factorial = (function f(num){
+	if (num <= 1){
+		return 1;
+	} else {
+		return num * f(num-1);
+	}
+});
 
 
