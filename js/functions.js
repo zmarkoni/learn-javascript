@@ -283,7 +283,8 @@ var obj = {
 
 //The module pattern augments the basic singleton to allow for private variables and privileged methods
 var singleton = function(){
-	//private variables and functions var privateVariable = 10;
+	//private variables and functions 
+	var privateVariable = 10;
 	function privateFunction(){
 		return false;
 	}
@@ -364,6 +365,7 @@ with additional properties and/or methods.
 
 If the application object in the module pattern example had to be an instance of BaseComponent, the following code could be used:
 */
+function BaseComponent(){}
 
 var application = function(){
 	//private variables and functions
@@ -373,7 +375,7 @@ var application = function(){
 	components.push(new BaseComponent());
 
 	//create a local copy of application
-	var app = new BaseComponent();
+	var app = new BaseComponent();  //new instance of BaseComponent.
 
 	//public interface
 	app.getComponentCount = function() {
