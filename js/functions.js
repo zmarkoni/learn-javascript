@@ -57,25 +57,46 @@ myObj.double = function () {
 	helper(); // Invoke helper as a function.
 };
 
-
 // Invoke double as a method.
 //myObj.double(5);
 
 //Constructor invocation pattern
-	var Quo = function (string) {
-	     this.status = string;
-	};
+var Quo = function (string) {
+    this.status = string;
+};
 
-	//Give all instances of Quo a public method called get_status
-	Quo.prototype.get_status = function () {
-		return this.status;
-	};
+//Give all instances of Quo a public method called get_status
+Quo.prototype.get_status = function () {
+    return print(this.status);
+};
 
-	// Make an instance of Quo.
-	var myQuo = new Quo("confused");
-	//print(myQuo.get_status()); // confused
+// Make an instance of Quo.
+var myQuo = new Quo("confused");
+//myQuo.get_status(); // confused
 
+// ==== Apply invocation pattern
 
+// Posto je JS fukncionalno objekto orjentisan, funkije mogu imati metode!
+// Apply metod nam omogucava da kreiramo array(niz) argumenata za pozivanje funkcije. Omogucava nam da izaberemo vrednost this-a.
+
+// Apply metod ima 2 parametra:
+// 		Prvi je vrednost koja je vezana za this
+// 		Drugi je niz parametara
+
+//Make an array of 2 numbers and add them.
+var array = [3, 4];
+var sum = add.apply(null, array);  //this,parametar
+// sum is 7
+
+//Make an object with a status member.
+var statusObject = {
+	status: 'A-OK'
+};
+
+//statusObject does not inherit from Quo.prototype,but we can invoke the get_status method on
+// statusObject even though statusObject does not have a get_status method.
+//get_status smo nasedili iz Quo objekta gore
+var status = Quo.prototype.get_status.apply(statusObject,null); // status is 'A-OK'
 
 
 // ===============  Closure	 =============================================
@@ -92,6 +113,7 @@ The outer function’s activation object is the second object in the scope chain
 This process continues for all containing functions until the scope chain terminates with the global execution context.
 As the function executes, variables are looked up in the scope chain for the reading and writing of values.
 */
+
 var myObject = function() {
 	var value = 0;
 
@@ -225,7 +247,9 @@ var name = "The Window";
 // print(obj.getName()()); //”The Window” (in non-strict mode)
 
 //Here, a global variable called name is created along with an object that also contains a
-//property called name. The object contains a method, getNameFunc(), that returns an anonymous function, which returns this.name. Since getNameFunc() returns a function, calling object .getNameFunc()() immediately calls the function that is returned, which returns a string. In this case, however, it returns “The Window”, which is the value of the global name variable. Why didn’t the anonymous function pick up the containing scope’s this object?
+//property called name. The object contains a method, getName(), that returns an anonymous function, which returns this.name. Since getName() returns a function,
+//calling object .getName() immediately calls the function that is returned, which returns a string. In this case, however, it returns “The Window”, which is the value of the global name variable.
+//Why didn’t the anonymous function pick up the containing scope’s this object?
 
 var obj = {
 	name:"My Object",
@@ -238,9 +262,11 @@ var obj = {
 	}
 };
 
-//print(obj.getName()()); //”The Object"
+//print(obj.getName()()); //My Object"
 
-// Before defining the anonymous function, a variable named that is assigned equal to the this object. When the closure is defined, it has access to that, since it is a uniquely named variable in the containing function. Even after the function is returned, that is still bound to object, so calling object .getNameFunc()() returns “My Object”.
+// Before defining the anonymous function, a variable named that is assigned equal to the this object.
+//When the closure is defined, it has access to that, since it is a uniquely named variable in the containing function.
+//Even after the function is returned, that is still bound to object, so calling object .getName() returns “My Object”.
 
 
 //Both this and arguments behave in this way. If you want access to a containing scope’s arguments object, you’ll need to save a reference into another variable that the closure can access.
@@ -248,24 +274,11 @@ var obj = {
 var obj = {
 	name:"My Object",
 
-	getName: function(){
+	getName: function(){ //nije closure
 		return this.name;
 	}
 };
 //print(obj.getName()); //”The Object"
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //=====  The Module Pattern  ======= pitanje u Vegi!!!	==================================
@@ -283,7 +296,7 @@ var obj = {
 
 //The module pattern augments the basic singleton to allow for private variables and privileged methods
 var singleton = function(){
-	//private variables and functions 
+	//private variables and functions
 	var privateVariable = 10;
 	function privateFunction(){
 		return false;

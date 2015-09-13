@@ -1,19 +1,14 @@
-var myObj = {
-    value:0,
-    increment:function(inc){
-        this.value += typeof inc ==='number' ? inc : 1;
-    }
-};
+var name = "The Window";
 
-//myObj.increment(3);
+var obj = {
+ name:"My Object",
 
-myObj.double = function() {
+ getName: function(){
     var that = this;
-    var helper = function() {
-        that.value = that.value + that.value;
-    }
-    helper();
+     return function(){
+         return that.name;
+     };
+ }
 };
 
-myObj.double(5);
-print(myObj.value);
+print(obj.getName()()); //”The Window” (in non-strict mode)
