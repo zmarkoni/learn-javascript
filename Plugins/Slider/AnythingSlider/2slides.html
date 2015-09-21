@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>AnythingSlider Expanding Demo</title>
+	<link rel="shortcut icon" href="demos/images/favicon.ico">
+	<link rel="apple-touch-icon" href="demos/images/apple-touch-icon.png">
+
+	<!-- Demo stuff -->
+	<link rel="stylesheet" href="demos/css/page.css">
+
+	<!-- Anything Slider -->
+	<link rel="stylesheet" href="css/anythingslider.css">
+	
+	<script type="text/javascript">
+
+        var loadedScripts = [];
+        load = function (scriptList, onLoad) {
+            if (scriptList) {
+                var count = scriptList.length;
+                try {
+                    for (var i in scriptList) {
+                        load.getScript(scriptList[i], count, onLoad);
+                    }
+                } catch (e) { }
+            }
+        }
+
+
+        load.getScript = function (filename, count, onLoad) {
+            var script = document.createElement('script')
+            var scriptLoaded = "ScriptLoaded";
+            if (onLoad)
+                scriptLoaded = onLoad;
+            script.src = filename;
+            if (script.onreadystatechange || script.onreadystatechange === null) {
+                script.onreadystatechange = function () {
+                    if (script.readyState == 'loaded') {
+                        try {
+                            window[scriptLoaded](filename, count);
+                        }
+                        catch (e) { }
+                    }
+                };
+            }
+            else {
+                script.setAttribute("onreadystatechange", scriptLoaded + "('" + filename + "', " + count + ")");
+                script.setAttribute("onload", scriptLoaded + "('" + filename + "', " + count + ")");
+            }
+            if (typeof script != "undefined")
+                document.getElementsByTagName("head")[0].appendChild(script)
+        }
+
+        function ScriptLoaded(filename, count) {
+            loadedScripts.push(filename);
+            //if (loadedScripts.length >= count)
+               // setTimeout(function () { DOMLoaded(); }, 100);
+			   DOMLoaded();
+        };
+
+
+
+        load([
+                "http://s3.amazonaws.com/au-home-dev/test-files-item-page/jquery-1.7.min.js"
+        ], "jqLoaded");
+
+        function jqLoaded() {
+            load([
+                    "http://s3.amazonaws.com/au-home-dev/test-files-item-page/jquery.anythingslider.js",
+                    "http://s3.amazonaws.com/au-home-dev/test-files-item-page/navigation.js"
+            ]);
+        }
+
+
+        function DOMLoaded() {
+
+            //show the image_tag_slider
+            $(function () {
+				$('#slider2').anythingSlider({
+				
+					expand       : true,
+					showMultiple : 2,
+					changeBy     : 1,
+					navigationFormatter: function (i, panel) { // add thumbnails as navigation links 
+						return '<img src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-' + [i] + '.jpg">';
+					},
+					navigationSize: 8,
+					buildStartStop: false,
+					onInitialized: function(e, slider2) {
+						$('#expand #slider2 ').css('visibility', 'visible');	
+					}
+				});
+
+			});
+
+            $('#main-navigation').append(myMenu);
+
+            $(function () {
+
+                $("#main-navigation li").hover(function () {
+
+                    $(this).addClass("hover");
+                    $('.lev2', this).css('visibility', 'visible');
+                    $('.bg-lookbook-arrow-bottom', this).css('visibility', 'visible');
+
+                }, function () {
+
+                    $(this).removeClass("hover");
+                    $('.lev2', this).css('visibility', 'hidden');
+                    $('.bg-lookbook-arrow-bottom', this).css('visibility', 'hidden');
+
+                });
+
+                //$("#main-navigation li ul li:has(ul)").find("a:first").append(" &raquo; ");
+            });
+
+            /*split Product description and specification in 2 coumns*/
+
+
+            // ------------------Specification------------------------
+            //count rows in table
+            var row_number = 0;
+            row_number = $('.attribute-specs table').find('tr').length;
+
+            var combos_table = $('#combos .attribute-specs table').find('tr').length;
+
+
+            if (row_number > 10 && combos_table == 0) {
+                //Create new table first and then apend second part of table >#product-attribute-specs-table to it!
+                $('.attribute-specs').append('<table id="new_table" class="data-table"></table>');
+                $('.attribute-specs table tr').slice(Math.ceil($('.attribute-specs table tr').length / 2)).appendTo('#new_table');
+
+                /*regulate width*/
+                $('.attribute-specs table').css('width', '50%');
+
+                //set height for tables
+                var specs_table_height = 0;
+                specs_table_height = $('.attribute-specs table').height();
+                //alert("specs_table_height :" + specs_table_height);
+
+                var new_table_height = 0;
+                new_table_height = $('#new_table').height();
+                //alert("new_table_height :" + new_table_height);		
+
+                /*regulate height*/
+                if (specs_table_height != 0 && new_table_height != 0) {
+                    if (specs_table_height < new_table_height) {
+                        $('.attribute-specs table').css('height', new_table_height + 2);
+                    } else {
+                        $('#new_table').css('height', specs_table_height + 2);
+                    }
+                }
+            }
+        };//DOMLoaded()
+
+    </script>
+	
+	<style>
+	 /*navigation*/
+
+#image_tag_slider .anythingSlider-default .anythingControls ul {
+    position: absolute;
+    height: 30px;
+    width:30px;
+
+}
+
+.thumbNav {
+    position:relative;
+    
+}
+ 
+.anythingNavWindow .thumbNav a {
+width: 134px!important;
+height: 108px!important;
+padding: 0 4px;
+margin: 0;
+margin-left: 1px;
+background:none;
+}
+
+
+.anythingSlider-default.activeSlider .anythingControls a.cur, 
+.anythingSlider-default.activeSlider .anythingControls a:hover,
+.anythingSlider-default.activeSlider .anythingControls a {
+background: white;
+}
+
+.anythingControls ul li img{
+width: 100%!important;
+}
+
+.anythingControls .prev{
+position: absolute;
+bottom: -108px;
+left:0;
+height: 108px;
+width: 25px;
+z-index: 2;
+background: #FFF;
+background: -moz-linear-gradient(top, #FFF 0%, #F1F1F1 0%, #D7D7D7 47%, #B1B1B1 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF), color-stop(0%,#F1F1F1), color-stop(47%,#D7D7D7), color-stop(100%,#B1B1B1));
+background: -webkit-linear-gradient(top, #FFF 0%,#F1F1F1 0%,#D7D7D7 47%,#B1B1B1 100%);
+background: -o-linear-gradient(top, #FFF 0%,#F1F1F1 0%,#D7D7D7 47%,#B1B1B1 100%);
+background: -ms-linear-gradient(top, #FFF 0%,#F1F1F1 0%,#D7D7D7 47%,#B1B1B1 100%);
+background: linear-gradient(to bottom, #FFF 0%,#F1F1F1 0%,#D7D7D7 47%,#B1B1B1 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#b1b1b1',GradientType=0 );
+}
+
+.anythingControls .prev a{
+    background: url("https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/tracker-nav-prev.png") no-repeat center!important;  
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    height: 105px;
+    z-index: 2;  
+}
+
+.anythingControls .next {
+position: absolute;
+right:0;
+bottom: -108px;
+height: 108px;
+width: 25px;
+z-index: 2;
+background: #FFF;
+background: -moz-linear-gradient(top, #FFF 0%, #F1F1F1 0%, #D7D7D7 47%, #B1B1B1 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF), color-stop(0%,#F1F1F1), color-stop(47%,#D7D7D7), color-stop(100%,#B1B1B1));
+background: -webkit-linear-gradient(top, #FFF 0%,#F1F1F1 0%,#D7D7D7 47%,#B1B1B1 100%);
+background: -o-linear-gradient(top, #FFF 0%,#F1F1F1 0%,#D7D7D7 47%,#B1B1B1 100%);
+background: -ms-linear-gradient(top, #FFF 0%,#F1F1F1 0%,#D7D7D7 47%,#B1B1B1 100%);
+background: linear-gradient(to bottom, #FFF 0%,#F1F1F1 0%,#D7D7D7 47%,#B1B1B1 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#b1b1b1',GradientType=0 );
+}
+
+.anythingControls .next a{
+    background: url("https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/tracker-nav-next.png") no-repeat center!important;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    height: 105px;
+    z-index: 2;
+}
+
+.anythingControls .prev span,
+.anythingControls .next span{
+    display:none;
+}
+	</style>
+</head>
+
+<body id="expand">
+
+<br><br><br><br>
+
+<h2>Half page width with two images showing</h2>
+	<!-- Expanding AnythingSlider 50% width -->
+
+<div id="wrapper2">
+	<ul id="slider2">
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-1.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-2.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-3.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-4.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-5.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-6.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-7.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-8.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-9.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-10.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-11.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-12.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-13.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-14.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-15.jpg" alt="" /></li>
+		<li><img class="carousel-image" src="http://s3.amazonaws.com/au-home-dev/test-images/reels/reel-16.jpg" alt="" /></li>
+	</ul>
+</div>
+
+	<!-- END AnythingSlider -->
+	
+</body>
+
+</html>

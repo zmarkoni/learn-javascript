@@ -1,0 +1,15 @@
+c:\users\zoran\documents\visual studio 2012\Projects\Sequence\Sequence\bin\Sequence.dll
+c:\users\zoran\documents\visual studio 2012\Projects\Sequence\Sequence\bin\Sequence.pdb
+c:\users\zoran\documents\visual studio 2012\Projects\Sequence\Sequence\obj\Debug\Sequence.csprojResolveAssemblyReference.cache
+c:\users\zoran\documents\visual studio 2012\Projects\Sequence\Sequence\obj\Debug\Sequence.dll
+c:\users\zoran\documents\visual studio 2012\Projects\Sequence\Sequence\obj\Debug\Sequence.pdb
+C:\Users\ZORAN\Downloads\Plugins Zoki\Sequence\Sequence\Sequence\bin\Sequence.dll
+C:\Users\ZORAN\Downloads\Plugins Zoki\Sequence\Sequence\Sequence\bin\Sequence.pdb
+C:\Users\ZORAN\Downloads\Plugins Zoki\Sequence\Sequence\Sequence\obj\Debug\Sequence.csprojResolveAssemblyReference.cache
+C:\Users\ZORAN\Downloads\Plugins Zoki\Sequence\Sequence\Sequence\obj\Debug\Sequence.dll
+C:\Users\ZORAN\Downloads\Plugins Zoki\Sequence\Sequence\Sequence\obj\Debug\Sequence.pdb
+C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Slider\Sequence - Animation Slider\Sequence\bin\Sequence.dll
+C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Slider\Sequence - Animation Slider\Sequence\bin\Sequence.pdb
+C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Slider\Sequence - Animation Slider\Sequence\obj\Debug\Sequence.csprojResolveAssemblyReference.cache
+C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Slider\Sequence - Animation Slider\Sequence\obj\Debug\Sequence.dll
+C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Slider\Sequence - Animation Slider\Sequence\obj\Debug\Sequence.pdb

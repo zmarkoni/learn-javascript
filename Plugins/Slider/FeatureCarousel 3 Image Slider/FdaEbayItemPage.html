@@ -1,0 +1,496 @@
+﻿<!------------------------------------ 0. header tag ------------------------------------------------------------------>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<!--[if IE 7]>         <html class="ie9 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="ie9 lt-ie9"> <![endif]-->
+<!--[if IE 9 ]>    	   <html class="ie9"> <![endif]-->
+<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css' />
+<link href="https://s3.amazonaws.com/au-home-dev/test-files-item-page/global.css" rel="stylesheet" />
+<link href="https://s3.amazonaws.com/au-home-dev/test-files-item-page/header_and_footer.css" rel="stylesheet" />
+<link href="https://s3-ap-southeast-2.amazonaws.com/au-home-live/global-css/sliderkit-core.css" rel="stylesheet" />
+<link href="https://s3.amazonaws.com/au-home-dev/test-files-item-page/item-page.css" rel="stylesheet" />
+<script type="text/javascript">
+var loadedScripts = [];
+load = function (scriptList, onLoad) {
+if (scriptList) {
+var count = scriptList.length;
+try {
+for (var i in scriptList) {
+load.getScript(scriptList[i], count, onLoad);
+}
+} catch (e) { }
+}
+}
+load.getScript = function (filename, count, onLoad) {
+var script = document.createElement('script')
+var scriptLoaded = "ScriptLoaded";
+if (onLoad)
+scriptLoaded = onLoad;
+script.src = filename;
+if (script.onreadystatechange || script.onreadystatechange === null) {
+script.onreadystatechange = function () {
+if (script.readyState == 'loaded') {
+try {
+window[scriptLoaded](filename, count);
+}
+catch (e) { }
+}
+};
+}
+else {
+script.setAttribute("onreadystatechange", scriptLoaded + "('" + filename + "', " + count + ")");
+script.setAttribute("onload", scriptLoaded + "('" + filename + "', " + count + ")");
+}
+if (typeof script != "undefined")
+document.getElementsByTagName("head")[0].appendChild(script)
+}
+function ScriptLoaded(filename, count) {
+loadedScripts.push(filename);
+if (loadedScripts.length >= count)
+DOMLoaded();
+};
+load([
+"https://s3-ap-southeast-2.amazonaws.com/au-home-live/global-javascript/jQuery-1.10.2-min.js"
+], "jqLoaded");
+function jqLoaded() {
+load([
+"https://s3-ap-southeast-2.amazonaws.com/au-home-live/global-javascript/jquery.easing.1.3.min.js",
+"https://s3-ap-southeast-2.amazonaws.com/au-home-live/global-javascript/jquery.sliderkit.1.9.2.pack.js",
+"https://s3-ap-southeast-2.amazonaws.com/au-home-live/global-javascript/sliderkit.imagefx.1.0.js",
+"https://s3.amazonaws.com/au-home-dev/test-files-item-page/jquery.featureCarousel.js",
+"https://s3.amazonaws.com/au-home-dev/test-files-item-page/navigation.js"
+]);
+}
+function DOMLoaded() {
+$('#main-navigation').append(myMenu);
+$(function () {
+$("#main-navigation li").hover(function () {
+$(this).addClass("hover");
+$('.lev2', this).css('visibility', 'visible');
+$('.bg-lookbook-arrow-bottom', this).css('visibility', 'visible');
+}, function () {
+$(this).removeClass("hover");
+$('.lev2', this).css('visibility', 'hidden');
+$('.bg-lookbook-arrow-bottom', this).css('visibility', 'hidden');
+});
+//$("#main-navigation li ul li:has(ul)").find("a:first").append(" &raquo; ");
+});
+if ($(".carousel-container").length > 0) {
+var carousel = $("#carousel").featureCarousel({
+autoPlay: false,
+largeFeatureWidth: 652,
+largeFeatureHeight: 490,
+smallFeatureWidth: 318,
+smallFeatureHeight: 239,
+sidePadding: -40,
+smallFeatureOffset: 180,
+trackerSummation: false,
+carouselSpeed: 500
+});
+}
+/*split Product description and specification in 2 coumns*/
+// ------------------Specification------------------------
+//count rows in table
+var row_number = 0;
+row_number = $('.attribute-specs table').find('tr').length;
+var combos_table = $('#combos .attribute-specs table').find('tr').length;
+if (row_number > 10 && combos_table == 0) {
+//Create new table first and then apend second part of table >#product-attribute-specs-table to it!
+$('.attribute-specs').append('<table id="new_table" class="data-table"></table>');
+$('.attribute-specs table tr').slice(Math.ceil($('.attribute-specs table tr').length / 2)).appendTo('#new_table');
+/*regulate width*/
+$('.attribute-specs table').css('width', '50%');
+//set height for tables
+var specs_table_height = 0;
+specs_table_height = $('.attribute-specs table').height();
+//alert("specs_table_height :" + specs_table_height);
+var new_table_height = 0;
+new_table_height = $('#new_table').height();
+//alert("new_table_height :" + new_table_height);		
+/*regulate height*/
+if (specs_table_height != 0 && new_table_height != 0) {
+if (specs_table_height < new_table_height) {
+$('.attribute-specs table').css('height', new_table_height + 2);
+} else {
+$('#new_table').css('height', specs_table_height + 2);
+}
+}
+}
+};//DOMLoaded()
+</script>
+</head>
+<body>
+<div id="container">
+<div class="header_tag">
+<div id="header_up">
+<div class="logo">
+<a href="http://stores.ebay.com.au/Fishing-Deals-Australia" title="fishing deals"> 
+<img src="http://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/FishingDeals_logo.png" alt="fishing deals" />
+</a>
+</div>
+<nav>
+<div class="main_nav">
+<ul id="main-navigation" class="overthrow"></ul>
+</div>
+</nav>
+<!-- main_nav -->
+<div class="search-container">
+<form id="search_mini_form" action="http://stores.ebay.com.au/Fishing-Deals-Australia/_i.html" method="get" name="Search">
+<input value="1" name="LH_TitleDesc" type="checkbox" class="checkbox" />
+<label>Descriptions</label>
+<input name="_nkw" type="text" class="input_text" maxlength="300" value="Search entire store" onblur="onBlur(this)" onfocus="onFocus(this)" />
+<input class="search_button" type="submit" name="submit" value="Search" />
+<input name="_sid" value="758910236" type="hidden" />
+</form>
+<script type="text/javascript"> function onFocus(field) { if (field.value == 'Search entire store') { field.value = ''; } } function onBlur(field) { if (field.value == '') { field.value = 'Search entire store'; } } </script>
+</div>
+</div>
+<!-- header_up-->
+<div id="header_down">
+</div><!-- header_down-->
+</div><!--.header_tag -->
+<!------------------------------------ end of header ------------------------------------------------------------------>
+<!------------------------------------ 1. side_panel_block tag ------------------------------------------------------------------>
+<div id="side_panel_block">           
+<!--{{ADTEMPLATEBUYNOWBUTTON}}-->
+<!-- 
+<div class="free_shipping">free shipping</div>
+<a class="checkout_instructions" target="_blank" href="http://pages.ebay.com.au/help/pay/checkout.html">Checkout Instructions</a>
+-->
+<script>document.write("<a class=\"buy_now\" href=\"http://offer.ebay.com.au/ws/eBayISAPI.dll?BinConfirm&fb=1&_trksid=p4340.l1356&quantity=0&item=" + ebayItemID + "\" title=\"Buy it Now\">");</script>
+<img alt="Buy it now" src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/buy_now.png" />
+<script>document.write("</a>");</script>
+<script>document.write("<a class=\"watch_item\" href=\"http://cgi1.ebay.com.au/ws/eBayISAPI.dll?MakeTrack&item=" + ebayItemID + "\" title=\"Watch this item.\">");</script>
+<img alt="Watch this item." src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/watch_item.png" />
+<script>document.write("</a>");</script>
+<img class="side_panel_horisontal_line" src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/side_panel_horisontal_line.jpg" alt="" />
+<script>document.write("<a class=\"tell_a_friend\" href=\"http://contact.ebay.com.au/ws1/eBayISAPI.dll?ShowEmailAuctionToFriend&item=" + ebayItemID + "\" title=\"Email a friend.\">");</script>
+<img alt="E-Mail a friend." src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/tell_a_friend.png" />
+<script>document.write("</a>");</script>
+</div>
+<img class="shadow" src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/shadow.png" alt="" />
+<!------------------------------------ end of side_panel_block ------------------------------------------------------------------>
+<!------------------------------------ 2. images-tag ------------------------------------------------------------------>
+<div id="image_tag">
+<div class="title_tag">
+<!--<h1>{{ITEMHEADING}}</h1>--><!-- I did not put  <h2>{{STORESUBTITLE}}</h2> --> 
+<h1>Sambo MENACE TC13SIL Custom Low profile BAITCASTER fishing reel Barra Baitcast</h1>
+<h3>Sambo MENACE TC13SIL Custom Low profile BAITCASTER fishing reel Barra Baitcast</h3>
+</div>
+<div class="carousel-container">
+<div id="hide_carousel_right_side"></div>
+<div id="carousel">
+<!--
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="{{IMAGE(IMAGE1)}}" alt="" /></a></div>
+-->
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-1.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-2.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-3.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-4.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-5.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-6.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-7.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-8.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-9.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-10.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-11.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-12.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-13.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-14.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-15.jpg" alt="" /></a></div>
+<div class="carousel-feature"><a href="#"><img class="carousel-image" src="https://s3.amazonaws.com/au-home-dev/test-images/reels/reel-16.jpg" alt="" /></a></div>
+</div><!-- carousel -->
+<div id="carousel-left"><img src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/carousel-right-arrow.png" /></div>
+<div id="carousel-right"><img src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/carousel-left-arrow.png" /></div>
+</div><!-- carousel-container -->
+</div>
+<!------------------------------------ end of images-tag ------------------------------------------------------------------>
+<!------------------------------------ 3. description_and_specification_tag ------------------------------------------------------------------>
+<div id="description_and_specification_tag"> 
+<div class="width40"> 
+<div class="quick_overview width100">
+<span>Quick Overview</span>
+<div class="text_box">
+<!--{{ITEMSHORTDESC}}-->
+SAMBO MRX SPIN Series reels are made to the highest specifications and closely compare to the Big Name Brands. This series sets a high standard with its spinning reel technology 
+and a powerful multi-disk drag system. Beneath the spool there are Multi-Disc Oiled Felt Drag Washers which equalize drag force and dissipate heat, therefore providing a 
+super smooth drag while under pressure. The Oscillation System offers excellent line lay while it maintains perfect stability. The reels feature a New Slimline Design with 
+Machined Aluminium spools, Folding One Touch CNC Aluminium Sports Handles with Big Rubber Knob & 10 Stainless Steel Ball Bearings. Ideal for species such as Bream, Trout, 
+Bass, this reel is sure to impress and perform.
+</div>
+</div><!-- .quick_overview-->
+<div id="description" class="width100"><!--Product Overview"-->
+<div class="section_title"><span class="s1">Product</span> <span class="s2">Description</span></div>
+<!--{{ITEMAUCTIONDESCRIPTION}}-->
+<ul>
+<li>NEW SAMBO JIGKING X JIGGING BIG GAME SPINNING Fishing Reel</li> 
+<li>4.1:1 Ratio</li>
+<li>10 Double Sealed Stainless Steel Ball Bearings</li>
+<li>Ultra Strong Aluminium Body &amp; Body Cover</li>
+<li>100% Fully Sealed Body Water Proof</li>
+<li>Marine Grade Stainless Steel Gears</li>
+<li>Instant Anti Reverse One Way Clutch System</li>
+<li>Machine Cut Aluminum CNC spool with Ball Bearing</li>
+<li>Precisely Machined Brass Gear &amp; S-Slider</li>
+<li>Brass Pinion &amp; Oscillation Gear</li>
+<li>Thick 5mm Aluminium Bail Arm with Air Bail</li>
+<li>Ultra Strong Drive Gear</li>
+<li>Aluminum Marine Grade 316 Machined Folding Handle</li>
+<li>Right/Left Interchangeable Power Handle</li>
+<li>Smooth Micro Adjustable Sealed Drag Setting</li>
+<li>10 Fully Sealed Sets of Carbon Material for Anti Friction</li>
+<li>Max Drag 30kg</li>
+<li>Elite Quality! Custom Fit and Finish!</li>
+</ul>
+<br>
+<br>
+<p><strong>Disclaimer: </strong>All brand &amp; product model names are registered trademarks of their respective companies and are for reference/comparison purposes only.</p>
+</div><!-- .long_description-->
+</div>
+<div class="width60">
+<div id="specification">
+<span class="section_title">Specification</span>
+<div class="attribute-specs"> <!--{{ITEMSPECIFICATION_REEL}}--> <!-- THIS IS A NEW TAG -->                  
+<table cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<th width="15%">SKU</th>
+<td>SP110LB500M-BLUE</td>
+</tr>
+<tr>
+<th>Brand</th>
+<td></td>
+</tr>
+<tr>
+<th>Length</th>
+<td>500m</td>
+</tr>
+<tr>
+<th>Width</th>
+<td>N/A</td>
+</tr>
+<tr>
+<th>Line Capacity</th>
+<td>
+<ul>
+<li>110lbs | 49.9kg | 0.56 Dia | 500 metres</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>Shipping Weight</th>
+<td>0.30</td>
+</tr>
+<tr>
+<th>Shop By</th>
+<td>GameFishing</td>
+</tr>
+<tr>
+<th>Species</th>
+<td>All Saltwater/Freshwater Species - including Snapper, Kingfish, Spotted Mackeral, Gummy Sharks, Cobia, Murry Cod, Yellowbelly, Bass, Bream, Whiting etc</td>
+</tr>
+<tr>
+<th>Technique</th>
+<td>Boat, Pier, Landbased, Spinning, Lure Casting etc</td>
+</tr>
+</tbody>
+</table>
+</div><!-- attribute-specs-->   
+</div><!-- .specification_tag-->
+<div id="specification_image_container" class="width100">
+<img class="specification_image1" src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/specification-image1.png" alt="" />
+<img class="specification_image2 single_image" src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/specification-image2.png" alt="" />
+<!-- second Image(specification_image2) can be SINGLE when is needed-->
+</div>
+</div>       
+</div><!-- .description_and_specification_tag-->
+<!------------------------------------ end of description_and_specification_tag ------------------------------------------------------------------>
+<!--{{MIDDLEBANNERTAG}}-->
+<div id="middle_banner_tag">
+<img src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/item-page-middle-banner/middle_banner_tag_reel.png" alt="" />
+</div>
+<!------------------------------------ end of middle_banner_tag ------------------------------------------------------------------>
+<!------------------------------------ 5. info_tag ------------------------------------------------------------------>
+<div id="info_tag">
+<!--Payment"-->
+<div class="payment">
+<div class="left_box width-50">
+<h1>PAYMENT</h1>
+<img src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/payment_methods.png" alt="" />
+<span class="payment_horizontal_line">We accept the following payment methods:</span>
+<ul>
+<li>PayPal (Visa, Mastercard, AMEX)</li>
+<li>Direct Deposit / Online Bank Transfer</li>
+<li>Bank Branch Deposit</li>
+<li>VISA</li>
+<li>Mastercard</li>
+</ul>
+<div class="dont_accept">
+<span>We don't accept:</span>
+<ul>
+<li>Personal, Business or Bank cheques</li>
+<li>Australian or International Money Orders or Cheques</li>
+</ul>
+<span>Note:</span>
+<p>Please leave your EBAY USER ID as a reference when making payment by Direct Deposit.</p>
+</div>
+</div>
+<div class="right_box width-50">
+<h1>HOW TO COMPLETE CHECKOUT</h1>
+<span>To pay for your items, please follow these steps:</span>
+<p>1) Log into your eBay account</p>
+<p class="short" >2) In the "Won" section you'll see the item(s) you purchase and the "Pay Now" button ( the button is also available on the item page )</p>
+<p>3) Click on the "Pay Now" button and review the listing information, final cost of the item, shipping address and payment method</p>
+<img class="pay_now" src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/pay_now.png" alt="" />
+</div>
+</div><!--Payment"-->
+<!--Shipping"-->
+<div class="shipping">
+<div class="left_box width-70">
+<h1>shipping</h1>
+<span>If you haven't received your item in the specified timeframe, please contact us before leaving feedback and we will assist you.</span>
+<span>PO Boxes</span>
+<ul><li>Unfortunately we are unable to ship to PO Boxes</li></ul>
+<span>Postage discount</span>
+<ul>
+<li>We offer a postage discount of $4.00 on additional applicable items. The discount will be applied automatically during checkout</li>
+<li>To apply postage discount to additional applicable items, checkout must be completed within 5 days after the first auction has ended</li>
+</ul>
+<span>International postage</span> 
+<ul>
+<li>At the moment we are unable to ship any items Internationally</li>
+<li>At the moment we are unable to ship fishing rods to post codes considered international ( 2899 - Norfolk Island, 4875 - Thursday Island, 6798 - Christmas Island, 6799 - Cocos island ). Orders with these shipping addresses will be cancelled and a refund issued</li>
+</ul>
+<span>Delivery Time</span> 
+<ul><li>Usual delivery time is 2-5 business days, depending on your location</li></ul>
+<span>Shipping & Handling charges</span> 
+<ul>
+<li>Please note that Shipping & Handling charges include packaging and handling costs, as well as actual postage cost</li>
+<li>Shipping costs also include insurance for lost and damaged items ( all insurance claims must be verified by courier first ).</li>
+<li>All Australian Courier charges allow for Only 1 Attempted Delivery per order. All orders will be shipped as ATL ‘Authority to Leave’ at the premises. Please supply an address where someone can sign for the parcel</li>
+</ul>
+<p class="info"><i>You can find more information about shipping in our <a href="http://stores.ebay.com.au/Fishing-Deals-Australia/Australian-Shipping.html"><strong>Shipping FAQ</strong></a></i></p>
+</div>
+<div class="right_box width-30">
+<img src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/watch.png" alt="" />
+<img src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/discounts_image.png" alt="" />
+</div>
+</div>
+<!--Warranty"-->
+<div class="warranty">
+<div class="left_box width-50">
+<h1>WARRANTY</h1>
+<p>Buy all your fishing gear online from Fishing Deals Australia with confidence.</p>
+<span>How long does our warranty last?</span>
+<ul>
+<li>All Buy Now items sold by Fishing Deals Australia on eBay come with our standard 12 Month Warranty.</li>
+<li>For all Auction items purchased on eBay the warranty is 30 Days.</li>
+</ul>
+<span>What does our warranty cover?</span>
+<p>Our warranty applies to any items that are dead on arrival or there's a manufacturing fault with them.</p>
+<p>In these cases, Fishing Deals Australia will repair, replace or refund the product ( at our discretion, depending on the situation ) at no expense to the customer, including all related shipping charges.
+Please note that in these situations we will require proof of purchase. As is standard practice for online selling, we reserve the right to inspect and assess the returned defective product first to determine the warranty required.
+</p>
+<span>What is NOT covered by our warranty?</span>
+<p>Situations in which our standard warranty DOES NOT apply:</p><br/>
+<ul>
+<li>No refund / replacement will be given if any unauthorised repairs were done to the product</li>
+<li>No refund / replacement will be given if there's a fault caused by misuse or normal wear and tear</li>
+<li>No refund / replacement will be given if we are not contacted within the timeframes specified in the warranty</li>
+</ul>
+<span>Items damaged in transit / sent wrong:</span>
+<ul>
+<li>If you have received a wrong item, or the product has been damaged in transit, we must be contacted within 24 hours. In these cases we will require proof of damage / incorrect item sent, via photos emailed to us.</li>
+</ul>
+<p class="info"><i>Please note that we must be contacted within the timeframes specified above in order for the warranty to apply.</i></p>
+</div>
+<div class="right_box width-50">
+<h1>Returns</h1>
+<span>Returns and exchanges are possible for Buy Now purchases only</span>
+<p>- If you have purchased a wrong item or changed your mind, we do offer an option of returning the item back to us for a refund or exchange within 30 Days of the purchase date. In this case, the buyer is responsible for all associated shipping charges.</p>
+<p>- Please note that certain items such as rods, large accessory items and clothing are excluded and cannot be returned. If you wish to return an item, please contact us to verify it is eligible.</p>
+<p>- All items returned must be in sellable condition ( unopened, unused and in their original packaging, with all additional material present ). If an item is deemed unsellable, the buyer will be responsible for shipping costs of returning the item back to them.</p>
+<span>Refunds</span>
+<p>Refunds will be done in the same way the payment was made ( Wire transfer, PayPal or Credit Card ).</p>
+<span>Exchanges</span>
+<p>Exchanges will be made for an item of the same value and can take up to 14 days to process.</p>
+</div>
+</div>
+</div><!--info_tag-->
+<!------------------------------------ end of info_tag ------------------------------------------------------------------>
+<!----------------------------------6. UPSELL tag ------------------------------------------------------------------>
+<!--{{UPSELLTAG}}-->
+<div id="upsell_tag">
+<img class="we_also_recommand" src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/we_also_recommand.jpg" alt="" />
+<div class="upSellWrap">
+<div class="item">
+<a target="_blank" title="" href="http://stores.ebay.com.au/Fishing-Deals-Australia_Spinning-Reels_W0QQLHQ5fBINZ1QQ_fsubZ424922016QQ_sidZ758910236QQ_trksidZp4634Q2ec0Q2em322">
+<img alt="" src="http://c13779354.r54.cf2.rackcdn.com/img/REEL-TOK-SG6000-1.jpg" />
+</a>
+<p><a target="_blank" title="" href="http://stores.ebay.com.au/Fishing-Deals-Australia_Spinning-Reels_W0QQLHQ5fBINZ1QQ_fsubZ424922016QQ_sidZ758910236QQ_trksidZp4634Q2ec0Q2em322">Spinning Reels</a></p>
+</div>
+<div class="item">
+<a target="_blank" title="" href="http://stores.ebay.com.au/Fishing-Deals-Australia_Surf-Reels_W0QQLHQ5fBINZ1QQ_fsubZ424923016QQ_sidZ758910236QQ_trksidZp4634Q2ec0Q2em322">
+<img alt="" src="http://c13779354.r54.cf2.rackcdn.com/img/REEL-SK10000G-1.jpg" /></a>
+<p><a target="_blank" title="" href="http://stores.ebay.com.au/Fishing-Deals-Australia_Surf-Reels_W0QQLHQ5fBINZ1QQ_fsubZ424923016QQ_sidZ758910236QQ_trksidZp4634Q2ec0Q2em322">Surf Reels</a></p>
+</div>
+<div class="item">
+<a target="_blank" title="" href="http://stores.ebay.com.au/Fishing-Deals-Australia_Spinning_W0QQLHQ5fBINZ1QQ_fsubZ1623708016QQ_sidZ758910236QQ_trksidZp4634Q2ec0Q2em322">
+<img alt="" src="http://c13779354.r54.cf2.rackcdn.com/img/COMBO-T1002MH-C+TOK-SN6000-RED.jpg" /></a>
+<p><a target="_blank" title="" href="http://stores.ebay.com.au/Fishing-Deals-Australia_Spinning_W0QQLHQ5fBINZ1QQ_fsubZ1623708016QQ_sidZ758910236QQ_trksidZp4634Q2ec0Q2em322">Surf Combos</a></p>
+</div>
+<div class="item last">
+<a target="_blank" title="" href="http://stores.ebay.com.au/Fishing-Deals-Australia_Monofilament_W0QQLHQ5fBINZ1QQ_fsubZ424934016QQ_sidZ758910236QQ_trksidZp4634Q2ec0Q2em322">
+<img alt="" src="http://c13779354.r54.cf2.rackcdn.com/img/LINE-SMIGFA-10KGBLUE-1.jpg" /></a>
+<p><a target="_blank" title="" href="http://stores.ebay.com.au/Fishing-Deals-Australia_Monofilament_W0QQLHQ5fBINZ1QQ_fsubZ424934016QQ_sidZ758910236QQ_trksidZp4634Q2ec0Q2em322">Fishing Line</a></p>
+</div>
+<img class="upsell_small_banner" src="https://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/upsell_small_banner.png" alt="" />
+</div><!--upSellWrap -->
+</div><!--upsell_tag -->
+<!-----------------------------------end of UPSELL tag ------------------------------------------------------------------>
+<!-----------------------------------footer tag ------------------------------------------------------------------>
+<div class="footer">
+<div class="footer_links">
+<div class="left">
+<div class="links first">
+<h2>Customer</h2>
+<ul>
+<li><a href="http://stores.ebay.com.au/Fishing-Deals-Australia/Australian-Shipping.html">Shipping &amp; Delivery</a></li>
+<li><a href="http://stores.ebay.com.au/Fishing-Deals-Australia/30-Day-Guarantee.html">Warranty &amp; Returns</a></li> 
+</ul>
+</div>
+<div class="links">
+<h2>Online Shopping</h2>
+<ul>
+<li><a href="http://feedback.ebay.com.au/ws/eBayISAPI.dll?ViewFeedback2&amp;userid=fishing-deals-au&amp;ftab=AllFeedback">Customer Service</a></li>
+<li><a href="http://stores.ebay.com.au/Fishing-Deals-Australia/Payments.html">Safe, Secure Payments</a></li>                              
+</ul>
+</div>
+<div class="links last_links">
+<h2>About</h2>
+<ul>
+<li><a href="http://cgi3.ebay.com.au/ws/eBayISAPI.dll?ViewUserPage&amp;userid=fishing-deals-au">About Us</a></li>
+<li><a href="http://stores.ebay.com.au/Fishing-Deals-Australia/Privacy.html">Privacy &amp; Online Safety</a></li>							        
+</ul>
+</div>
+</div>
+<div class="footer_free_shipping">
+<a href="http://stores.ebay.com.au/Fishing-Deals-Australia/Australian-Shipping.html" >
+<img src="http://s3-ap-southeast-2.amazonaws.com/au-home-live/fishingdeals/ebay/dev/images/footer_free_shipping.jpg" alt="Facebook" />
+</a>
+</div>
+</div>                            
+<div class="f_down_wrapper">
+<div class="copyright">Copyright &copy; 2009-2013 <span>Fishing Deals Australia</span> Pty Ltd</div>
+</div>            
+</div><!-- #footer-->
+<!-----------------------------------end of footer tag ------------------------------------------------------------------>
+</div><!-- #container-->
+<!--dont copy container div -->
+<!--Add the following script at the bottom of the web page (before </body></html>)
+<script type="text/javascript" src="https://mylivechat.com/chatbutton.aspx?hccid=98297151"></script>
+-->
+</body>
+</html>

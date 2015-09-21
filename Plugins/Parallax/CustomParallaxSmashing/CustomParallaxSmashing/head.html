@@ -1,0 +1,73 @@
+<?php
+/**
+ * Magento Head
+ *
+ */
+?>
+
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<title><?php echo $this->getTitle() ?></title>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+
+<!-- Meta tags for Responsive design -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="cleartype" content="on">
+
+<!-- Include stylesheet with media querty -->
+		
+	<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/styles.css" media="screen">
+    <link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/global.css" media="screen">
+	<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/desktop.css" media="screen">
+		
+		<!-- Media Queries -->
+        <link  rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/width1300.css"  media="screen and (max-width: 1300px)">
+        <link  rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/width960.css"  media="screen and (max-width: 960px)">
+        <link  rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/tablet.css"    media="screen and (max-width: 768px)">
+        <link  rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>css/mobile.css"    media="screen and (max-width: 640px)">
+        
+	
+ <!-- GOOGLE WEB FONTS from http://www.google.com/webfonts#UsePlace: use by Zoran  -->
+<?php // Check if is HTTP or HTTPS
+  $protocol='http';
+	if (isset($_SERVER['HTTPS']))
+	  if (strtoupper($_SERVER['HTTPS'])=='ON')
+  $protocol='https';
+?>
+<link href='<?echo $protocol?>://fonts.googleapis.com/css?family=Oswald:700,400,300' rel='stylesheet' type='text/css'>
+<link href='<?echo $protocol?>://fonts.googleapis.com/css?family=Archivo+Black' rel='stylesheet' type='text/css'>
+<link href='<?echo $protocol?>://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<![endif]-->
+
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
+
+<!-- script for SSL certificate -Need to be here -->
+
+<script language="javascript" type="text/javascript">
+//<![CDATA[
+var tl_loc0=(window.location.protocol == "https:")? "https://secure.comodo.net/trustlogo/javascript/trustlogo.js" :
+"http://www.trustlogo.com/trustlogo/javascript/trustlogo.js";
+document.writeln('<scr' + 'ipt language="JavaScript" src="'+tl_loc0+'" type="text\/javascript">' + '<\/scr' + 'ipt>');
+//]]>
+</script>
+

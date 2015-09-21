@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sequence tutorial</title>
+
+    <link href="css/sequence-style.css" rel="stylesheet" />
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.sequence.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var options = {
+                autoPlay: true,
+                autoPlayDelay: 3000
+            }
+
+            var options2 = {
+                autoPlay: false,
+                autoPlayDelay: 5000
+            }
+
+            var sequence = $("#sequence").sequence(options).data("sequence");
+            var sequence2 = $("#sequence2").sequence(options2).data("sequence");
+        });
+    </script>
+
+</head>
+<body>
+    <header><h1>Sequence Tutorial</h1></header>
+    <section>
+        <div id="sequence">
+            <ul class="sequence-canvas">
+                <li class="animate-in">
+                    <div class="info1">
+                        <p>Frame 1</p>
+                    </div>
+                    <!-- Here you’ve nominated the first frame to be displayed if JavaScript is disabled.
+                     i DA BI TO OMOGUCIO DODAO SAM animate-in KLASU LI-JU   
+                     -->
+                    <img class="my-image" src="my-image.jpg" alt="An image of me" />
+                </li>
+                <li>
+                    <div class="info2">
+                        <p>Frame 2</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="info3">
+                        <p>Frame 3</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

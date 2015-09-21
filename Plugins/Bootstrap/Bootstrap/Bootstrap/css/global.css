@@ -1,0 +1,264 @@
+﻿body {
+width: 100%;
+float: left;
+margin: 0;
+color:white;
+}
+
+#parallax-wrapper {
+float: left;
+width: 100%;
+clear: both;
+z-index: 1;
+color:white;
+}
+
+.parallax {
+position: relative;
+width: 100%!important;
+overflow: hidden;
+padding: 0;
+margin: 0;
+clear: both;
+float: left;
+}
+
+#section6 {
+background: url('../images/dealers_section_bg.jpg') no-repeat;
+z-index: 5;
+}
+
+#section6 {
+background-size: 100%;
+background-attachment: fixed;
+background-position: 50% 0;
+}
+
+.dealers_map_bg {
+    float:left;
+    width:100%;
+    padding-top: 100px;
+    padding-bottom: 46px;
+    z-index:1;
+}
+
+.dealer_block {
+    /*z-index:2;*/
+    position:absolute;
+    width:auto;
+
+}
+
+.dealer_map_img {
+    width:19px;
+    height:19px;
+    float:left;
+}
+
+.dealer_name {  
+    float:left;
+    padding: 5px 10px;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.8);  
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.dealer_block:hover {
+    font-size: 13px;
+    color:silver;
+}
+
+.popover {
+    min-width: 230px!important;
+    border-color: rgb( 182, 182, 182 )!important;
+    border-radius: 5px;
+    background-image: -moz-linear-gradient( 90deg, rgb(0,0,0) 0%, rgb(104,104,104) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(0,0,0) 0%, rgb(104,104,104) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(0,0,0) 0%, rgb(104,104,104) 100%);
+    opacity: 0.91;
+    box-shadow: 2.5px 4.33px 5px 0px rgb( 0, 0, 0 );
+    font-size: 12px;
+    opacity: 0.91!important;
+    z-index:10!important;
+}
+
+.popover-title {
+    background:none!important;
+    border-radius:0!important;
+}
+
+.popover .flag {
+    width:30px;
+    height:20px;
+    float:right;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+/* dealers individualstyles*/
+
+.central_america {
+    left: 27%;
+    top: 47%;
+}
+
+#central_america {
+    width:140px;
+    margin-top: -25px;
+    margin-left: 2px;
+
+}
+
+.dealer_block.central_america .popover.left {
+margin-left: -75px!important;
+margin-top: 13px!important;
+}
+
+.cyprus {
+    left: 55%;
+    top: 43%;
+}
+
+#cyprus {
+    width:auto;
+    margin-right:2px;
+    margin-top: 7px;
+
+}
+
+.germany {
+    left: 52.3%;
+    top: 33%;
+}
+
+#germany {
+    width:155px;
+    margin-top: -32px;
+    margin-left: 2px;
+
+}
+
+.greece {
+    left: 56%;
+    top: 40%;
+}
+
+#greece {
+    width:auto;
+    margin-left: 2px;
+    margin-top: -10px;
+}
+
+.italy {
+    left: 53.2%;
+    top: 39%;
+}
+
+#italy {
+    width:auto;
+    clear: both;
+    margin-left: -13px;
+    margin-top: 2px;
+}
+
+.italy .popover.left {
+margin-left: -55px;
+}
+
+.israel {
+    left: 59.5%;
+    top: 44.8%;
+}
+
+#israel {
+    width:auto;
+    clear: both;
+    margin-left: -5px;
+    margin-top: 2px;
+}
+
+.kuwait {
+    left: 63%;
+    top: 45.8%;
+}
+
+#kuwait {
+    width:150px;
+    margin-left: 2px;
+    margin-top: 3px;
+}
+
+.lebanon {
+    left: 60%;
+    top: 43%;
+}
+
+#lebanon {
+    width:auto;
+    margin-top: -10px;
+    
+}
+
+.maldives {
+    left: 70%;
+    top: 60%;
+}
+
+#maldives {
+    width:auto;
+    clear: both;
+    margin-left: -15px;
+    margin-top: 2px;
+    
+}
+
+.new_zeland {
+    left: 97%;
+    top: 83%;
+}
+
+#new_zeland {
+    width:auto;
+    margin-left: -130px;
+    margin-top: -5px;
+}
+   
+.portugal {
+    left: 47%;
+    top: 40.5%;
+}
+
+#portugal {
+    width:auto;
+    clear: both;
+    margin-left: -15px;
+    margin-top: 2px;
+}
+
+.south_america {
+    left: 33%;
+    top: 72%;
+}
+
+#south_america {
+    width:auto;
+    margin-left: 2px;
+    margin-top:-4px;
+    
+}
+
+ .south_east_asia {
+    left: 78%;
+    top: 60%;
+}
+
+#south_east_asia {
+    width:auto;
+    margin-left: 2px;
+    margin-top:-4px;
+    
+}   
