@@ -1,0 +1,53 @@
+body {
+  background: #042029;
+  font-family: 'Merriweather';
+  color: #EAE3CB;
+}
+
+.wrapper {
+    width:800px;
+    margin:0 auto;
+}
+
+h1 {
+    margin-bottom:30px;
+}
+
+#artlist {
+  width: 100%;
+  float: left;
+
+}
+
+#artlist h2 {
+  font-family: 'Bree Serif';
+  font-size: 2em;
+  color: #A57706;
+  margin:50px auto;
+}
+
+ul {
+  margin: 0 auto;
+  padding: 0;
+  float: left;
+  width:100%;
+}
+
+ul li {
+  list-style: none;
+  display: inline-block;
+  cursor: pointer;
+  float: left;
+  width:30%;
+  padding: 1.5%;
+  z-index:2;
+}
+
+ul li img {
+  width: 100%;
+  border: 1px solid #FCF4DC;
+}
+
+ul li img:hover {
+  opacity: 0.7;
+}

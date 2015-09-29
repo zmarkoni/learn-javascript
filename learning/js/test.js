@@ -1,14 +1,2 @@
-var name = "The Window";
-
-var obj = {
- name:"My Object",
-
- getName: function(){
-    var that = this;
-     return function(){
-         return that.name;
-     };
- }
-};
-
-print(obj.getName()()); //”The Window” (in non-strict mode)
+var element1 = document.querySelector("body");
+console.log(element1.atributes);

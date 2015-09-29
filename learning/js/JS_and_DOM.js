@@ -1,6 +1,6 @@
 ﻿//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Prototype-based_programming
 
-//================Check if broweser support javascript=============
+//============= Check if broweser support javascript=============
 var feature = {
     addEventListener: !!window.addEventListener,
     querySelectorAll: !!document.querySelectorAll
@@ -23,15 +23,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 }, false);
 
-//================Selectors API======================
+//============= Selectors API======================
+
 var element1 = document.guerySelector("div");
 var element2 = document.querySelector(".some-class");
 var element3 = document.querySelectorAll(".container div");
+var element4 = document.getElementById("someID");
 
 var nav = document.querySelector("nav");
 var links = nav.querySelectorAll("a");
 
-//=============Traversing the DOM ========================
+//============= Understanding nodeType, nodeName and NodeValue ======
+element1.nodeType
+element1.nodeName
+element1.atributes
+
+
+
+//============= Traversing the DOM nodes ========================
 // access to html tag <html>
 var htmlEl = document.documentElement.className;
 var parent = document.querySelector("div").parentNode;
@@ -46,7 +55,8 @@ var prevEl = document.querySelector("div").previousSibling;
 
 var lastEl = document.querySelector("div").lastElementChild;
 
-//================Adding and Removing Classes================
+
+//============= Adding and Removing Classes================
 // Select an element
 var element = document.querySelector(".some-class");
 
