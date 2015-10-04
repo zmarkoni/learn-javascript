@@ -112,56 +112,6 @@ var element = document.querySelector("#test");
 element.classList.add("two");
 element.classList.remove("four");
 
-//================= Event Listeners =====================
-
-//The simplest example, which will just pop out an alert message when an element is clicked, is as follows:
-
-element.addEventListener("click", function() {
-    alert("You clicked");
-}, false);
-
-
-//To achieve this same functionality on all of the elements on a given page,
-//we have to loop through each element, and give them all eventListeners:
-
-var links = document.querySelectorAll("a");
-// For each link element
-[].forEach.call(links, function (el) {
-    el.addEventListener("click", function (event) {
-        event.preventDefault;
-        alert("You clicked");
-    }, false);
-});
-
-//==============!important
-//One of JavaScript’s greatest features related to event listeners is the fact that "addEventListener" can
-//take an object as a second argument that will automatically look for a method called "handleEvent" and call it
-//read more on : http://www.thecssninja.com/javascript/handleevent
-var object = {
-    init: function () {
-        var button = document.getElementById("btn");
-        button.addEventListener("click", this, false);
-        button.addEventListener("touchstart", this, false);
-    },
-    handleEvent: function (e) {
-        switch (e.type) {
-            case "click":
-                this.action();
-                break;
-            case "touchstart":
-                this.action();
-                break;
-        }
-    },
-    action: function () {
-        alert("Clicked or touched!");
-    }
-};
-
-// Init
-object.init();
-
-
 //============Manipulating the DOM ===================
 //Below, we have an example that selects an element from the DOM, clones it, manipulates the clone’s styles with
 //JavaScript and then replaces the original element with the manipulated one.
@@ -223,20 +173,17 @@ function isInViewport(element) {
 }
 //The above function could be used by adding a “scroll” event listener to the window and then calling isInViewport().
 
-
-
-
-
-
 /*
 Working with properties from within the class is done by the keyword >> this <<<, which refers to the current object.
 (Inside the class the syntax this.Property is used to get or set the property's value.)
 
 Accessing (reading or writing) a property outside of the class is done with the syntax: >>> InstanceName.Property <<<
-
-
 */
 
+/* Clean this code down >>>>>>>>>>>>>>>>>>>  */
+
+
+//Inheritance
 function Person(name, gender) {
     this.name = name;
     this.gender = gender;
@@ -252,12 +199,11 @@ Person.prototype.Hello = function () {
 }
 
 //call a method
-                 //person2.Hello();
+//person2.Hello();
 
 //In JavaScript methods are regular function objects that are bound to a class/object as a property which means they can be invoked "out of the context". Consider the following example code:
 
 
-//Inheritance
 
 function Persons() { }
 
@@ -360,7 +306,6 @@ Wrapper objects also apply to both numbers and booleans in Javascript, so that m
 
 
 */
-
 
 // global variable​
 var allUserData = [];
