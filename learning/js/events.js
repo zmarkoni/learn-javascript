@@ -1,4 +1,22 @@
-    //================= Event Listeners =====================
+//================= Events ==============================
+/*
+addEventListener
+removeEventListener
+
+stopPropagation();
+preventDefault();
+
+bubbling, capturing
+*/
+
+//example
+document.getElementById('el').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+}, false);//false znaci bubble odozdo na gore, true je capture odozgo na
+
+
+//================= Event Listeners =====================
 
 //The simplest example, which will just pop out an alert message when an element is clicked, is as follows:
 
