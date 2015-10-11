@@ -1,0 +1,147 @@
+body {
+  background: silver;
+  font-size: 14px;
+}
+
+.wrapper {
+  width: 800px;
+  min-height: 500px;
+  background: #F7F2F2;
+  margin: 20px auto;
+  padding: 50px 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 36px;
+  text-align: center;
+}
+
+#searcharea {
+  width:300px;
+  margin:0 auto;
+  text-align: center;
+  padding: 15px 30px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: #FFAAAA;
+}
+
+#searcharea label {
+  font: bold 1.3em Arial;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  color: #A61C1C;
+}
+
+#searcharea p {
+  margin: 10px auto;
+  width: 190px;
+  line-height: 1em;
+  padding-bottom:5px;
+}
+
+#searcharea input {
+  width:80%;
+  text-align: center;
+  height: 30px;
+  font-size: 16px;
+}
+
+#placeholder {
+  clear: both;
+  width: 100%;
+  float: left;
+  margin:50px 0;
+}
+
+.searchresults {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.searchresults li {
+  width:96%;
+  padding: 2%;
+  background: #eee;
+  margin-bottom: 10px;
+  height: 105px;
+  overflow: hidden;
+  border-top: 1px solid #ccc;
+  cursor: pointer;
+  /*run animation which is defined at the bootm of the page*/
+  -webkit-animation: myanim 1s;
+  -o-animation: myanim 1s;
+  -moz-animation: myanim 1s;
+  animation: myanim 1s;
+
+  -webkit-transition: height 0.3s ease-out;
+  -o-transition: height 0.3s ease-out;
+  -moz-transition: height 0.3s ease-out;
+  transition: height 0.3s ease-out;
+}
+
+.searchresults li:hover {
+  background: #fffce5;
+  min-height: 110px;
+  height: 200px;
+  overflow: visible;
+}
+
+.searchresults li h2 {
+  margin: 0;
+  padding-bottom:5px;
+  font-size: 1.2em;
+  font-family: Arial;
+  color: #bf5841;
+}
+
+.searchresults li img {
+  float: left;
+  width: 80px;
+  margin-right: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.searchresults li p {
+  margin-top:10px;
+}
+
+.searchresults li b {
+  font-weight: bold;
+}
+
+.searchresults li span {
+  display: block;
+}
+
+.searchresults li a {
+
+}
+
+@-webkit-keyframes myanim {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+@-moz-keyframes myanim {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+@-0-keyframes myanim {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+@keyframes myanim {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}

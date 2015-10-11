@@ -1,0 +1,40 @@
+
+body {
+  background: silver;
+  font-size: 14px;
+}
+
+.wrapper {
+    width: 800px;
+    min-height: 500px;
+    background: #F7F2F2;
+    margin: 20px auto;
+    padding: 50px 20px;
+}
+
+h1 {
+    margin-bottom:30px;
+    font-size: 36px;
+    text-align: center;
+}
+
+#placeholder {
+  clear: both;
+  width:100%;
+  float: left;
+}
+
+#placeholder .block{
+  clear: both;
+  float: left;
+  width:100%;
+  margin-bottom: 10px;
+}
+
+#placeholder .content:nth-child(2n) {
+  color: red;
+}
+
+#placeholder .content:first-word {
+  font-weight: bold;
+}
