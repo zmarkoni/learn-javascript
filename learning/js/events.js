@@ -10,32 +10,32 @@ bubbling, capturing
 */
 
 //example
-document.getElementById('el').addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-}, false);//false znaci bubble odozdo na gore, true je capture odozgo na
+// document.getElementById('wrapper').addEventListener('click', function(e) {
+//     e.preventDefault();
+//     e.stopPropagation();
+// }, false);//false znaci bubble odozdo na gore, true je capture odozgo na
 
 
 //================= Event Listeners =====================
 
 //The simplest example, which will just pop out an alert message when an element is clicked, is as follows:
-
-element.addEventListener("click", function() {
-    alert("You clicked");
-}, false);
+// var element = document.getElementById('wrapper');
+// element.addEventListener("click", function() {
+//     alert("You clicked");
+// }, false);
 
 
 //To achieve this same functionality on all of the elements on a given page,
 //we have to loop through each element, and give them all eventListeners:
 
-var links = document.querySelectorAll("a");
-// For each link element
-[].forEach.call(links, function (el) {
-    el.addEventListener("click", function (event) {
-        event.preventDefault;
-        alert("You clicked");
-    }, false);
-});
+// var links = document.querySelectorAll("a");
+// // For each link element
+// [].forEach.call(links, function (el) {
+//     el.addEventListener("click", function (event) {
+//         event.preventDefault;
+//         alert("You clicked");
+//     }, false);
+// });
 
 //==============!important
 //One of JavaScript’s greatest features related to event listeners is the fact that "addEventListener" can
@@ -63,4 +63,38 @@ var object = {
 };
 
 // Init
-object.init();
+//object.init();
+
+//================= Event Delegation =====================
+
+// Get the parent DIV, add click listener...
+document.getElementById("wrapper").addEventListener("click",function(e) {
+    // e.target was the clicked element
+    e.preventDefault();
+    if(e.target && e.target.nodeName == "A") {
+        // Get the CSS classes
+        var classes = e.target.className.split(" ");
+        // Search for the CSS class!
+        if(classes) {
+            // For every CSS class the element has...
+            for(var x = 0; x < classes.length; x++) {
+                // If it has the CSS class we want...
+                if(classes[x] == "delegation") {
+                    // Bingo!
+                    print(e.target.text);
+                    break;
+                }
+                else if(classes[x] == "target") {
+                    document.getElementById("targetProperties").style.display="block";
+                    break;
+                }
+
+                else {
+                    print("It is not delation, insted it is: " + e.target.text);
+                }
+            }
+        }
+
+    }
+});
+

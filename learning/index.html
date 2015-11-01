@@ -6,7 +6,7 @@
     <link href="css/style.css" rel="stylesheet" />
 </head>
 <body class="body">
-    <div class="wrapper">
+    <div id="wrapper" class="wrapper">
         <h1>JavaScript The Good Parts</h1>
         <h3>Links:</h3>
         <ul>
@@ -18,18 +18,123 @@
         <ul>
             <li><a href="https://drive.google.com/open?id=0B3QolfY0EK2hTWY5LVJNYndraEk">JavaScript the definite guide</a></li>
             <li><a href="https://drive.google.com/open?id=0B3QolfY0EK2haWNvNlBDWVVVdWc">Professional Javascript for Web Developers 3rd Edition OnlyGill</a></li>
-            <li><a href="https://drive.google.com/open?id=0B3QolfY0EK2hNGFXcnMyOUViZmM">JavaScript- The Good Parts</a></li>
+            <li><a href="https://drive.google.com/open?id=0B3QolfY0EK2hNGFXcnMyOUViZmM" title="JavaScript- The Good Parts">JavaScript- The Good Parts</a></li>
+            <li><a class="delegation" href="http://davidwalsh.name/event-delegate">JavaScript - Event delegation</a></li>
+            <li><a class="target" href="http://stackoverflow.com/questions/7723188/what-properties-can-i-use-with-event-target">JavaScript - Event target properties</a></li>
         </ul>
+
         <div id="placeholder"></div>
+
+        <pre id="targetProperties"class="default prettyprint prettyprinted" style="display:none"><code><span class="kwd">event</span><span class="pun">.</span><span class="pln">target</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HTMLSpanElement</span><span class="pln">
+
+            attributes</span><span class="pun">:</span><span class="pln"> </span><span class="typ">NamedNodeMap</span><span class="pln">
+            baseURI</span><span class="pun">:</span><span class="pln"> </span><span class="str">"file:///C:/Test.html"</span><span class="pln">
+            childElementCount</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
+            childNodes</span><span class="pun">:</span><span class="pln"> </span><span class="typ">NodeList</span><span class="pun">[</span><span class="lit">1</span><span class="pun">]</span><span class="pln">
+            children</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HTMLCollection</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]</span><span class="pln">
+            classList</span><span class="pun">:</span><span class="pln"> </span><span class="typ">DOMTokenList</span><span class="pln">
+            className</span><span class="pun">:</span><span class="pln"> </span><span class="str">""</span><span class="pln">
+            clientHeight</span><span class="pun">:</span><span class="pln"> </span><span class="lit">36</span><span class="pln">
+            clientLeft</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pln">
+            clientTop</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pln">
+            clientWidth</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1443</span><span class="pln">
+            contentEditable</span><span class="pun">:</span><span class="pln"> </span><span class="str">"inherit"</span><span class="pln">
+            dataset</span><span class="pun">:</span><span class="pln"> </span><span class="typ">DOMStringMap</span><span class="pln">
+            dir</span><span class="pun">:</span><span class="pln"> </span><span class="str">""</span><span class="pln">
+            draggable</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pln">
+            firstChild</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pln">
+            firstElementChild</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            hidden</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pln">
+            id</span><span class="pun">:</span><span class="pln"> </span><span class="str">""</span><span class="pln">
+            innerHTML</span><span class="pun">:</span><span class="pln"> </span><span class="str">"click"</span><span class="pln">
+            innerText</span><span class="pun">:</span><span class="pln"> </span><span class="str">"click"</span><span class="pln">
+            isContentEditable</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pln">
+            lang</span><span class="pun">:</span><span class="pln"> </span><span class="str">""</span><span class="pln">
+            lastChild</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Text</span><span class="pln">
+            lastElementChild</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            localName</span><span class="pun">:</span><span class="pln"> </span><span class="str">"span"</span><span class="pln">
+            namespaceURI</span><span class="pun">:</span><span class="pln"> </span><span class="str">"http://www.w3.org/1999/xhtml"</span><span class="pln">
+            nextElementSibling</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            nextSibling</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            nodeName</span><span class="pun">:</span><span class="pln"> </span><span class="str">"SPAN"</span><span class="pln">
+            nodeType</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pln">
+            nodeValue</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            offsetHeight</span><span class="pun">:</span><span class="pln"> </span><span class="lit">38</span><span class="pln">
+            offsetLeft</span><span class="pun">:</span><span class="pln"> </span><span class="lit">26</span><span class="pln">
+            offsetParent</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HTMLBodyElement</span><span class="pln">
+            offsetTop</span><span class="pun">:</span><span class="pln"> </span><span class="lit">62</span><span class="pln">
+            offsetWidth</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1445</span><span class="pln">
+            onabort</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onbeforecopy</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onbeforecut</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onbeforepaste</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onblur</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onchange</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onclick</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            oncontextmenu</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            oncopy</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            oncut</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            ondblclick</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            ondrag</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            ondragend</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            ondragenter</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            ondragleave</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            ondragover</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            ondragstart</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            ondrop</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onerror</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onfocus</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            oninput</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            oninvalid</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onkeydown</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onkeypress</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onkeyup</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onload</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onmousedown</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onmousemove</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onmouseout</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onmouseover</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onmouseup</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onmousewheel</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onpaste</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onreset</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onscroll</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onsearch</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onselect</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onselectstart</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onsubmit</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            onwebkitfullscreenchange</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            outerHTML</span><span class="pun">:</span><span class="pln"> </span><span class="str">"&lt;span&gt;click&lt;/span&gt;"</span><span class="pln">
+            outerText</span><span class="pun">:</span><span class="pln"> </span><span class="str">"click"</span><span class="pln">
+            ownerDocument</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HTMLDocument</span><span class="pln">
+            parentElement</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HTMLElement</span><span class="pln">
+            parentNode</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HTMLElement</span><span class="pln">
+            prefix</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            previousElementSibling</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            previousSibling</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">null</span><span class="pln">
+            scrollHeight</span><span class="pun">:</span><span class="pln"> </span><span class="lit">36</span><span class="pln">
+            scrollLeft</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
+            scrollTop</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
+            scrollWidth</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1443</span><span class="pln">
+            spellcheck</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+            style</span><span class="pun">:</span><span class="pln"> </span><span class="typ">CSSStyleDeclaration</span><span class="pln">
+            tabIndex</span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pln">
+            tagName</span><span class="pun">:</span><span class="pln"> </span><span class="str">"SPAN"</span><span class="pln">
+            textContent</span><span class="pun">:</span><span class="pln"> </span><span class="str">"click"</span><span class="pln">
+            title</span><span class="pun">:</span><span class="pln"> </span><span class="str">""</span><span class="pln">
+            webkitdropzone</span><span class="pun">:</span><span class="pln"> </span><span class="str">""</span><span class="pln">
+            __proto__</span><span class="pun">:</span><span class="pln"> </span><span class="typ">HTMLSpanElement</span></code></pre>
+        </details>
     </div>
     <!--scripts-->
     <script src="js/helper.js"></script>
-    <script src="js/test.js"></script>
+    <!-- <script src="js/test.js"></script> -->
     <!-- <script src="js/JS_and_DOM.js"></script> -->
     <!-- <script src="js/main.js"></script> -->
     <!-- <script src="js/objects.js"></script> -->
     <!-- <script src="js/functions.js"></script> -->
     <!-- <script src="js/variables.js"></script> -->
     <!-- <script src="js/inheritance.js"></script> -->
+    <script src="js/events.js"></script>
 </body>
 </html>
