@@ -291,10 +291,181 @@ var myRevealingModule = (function() {
 
 }) ();
 
-console.log(myRevealingModule.greeting);
-myRevealingModule.setName("Jeka");
-myRevealingModule.getName();
+// console.log(myRevealingModule.greeting);
+// myRevealingModule.setName("Jeka");
+// myRevealingModule.getName();
 
+//  IV  SINGLETON PATTERN
 
+//In JavaScript, Singletons serve as a shared resource namespace which isolate
+//implementation code from the global namespace so as to provide a single point
+//of access for functions.
 
+var mySingleton = (function (){
+
+    var instance;       // Instance stores a reference to the Singleton
+    function init(){
+        // Singleton
+
+        //private
+        function privateMethod() {
+            console.log( "I am private" );
+        }
+        var privateVariable = "I am also private variable";
+
+        var privateRandomNumber = Math.random;
+
+        return {
+            //public
+
+            publicMethod: function() {
+                console.log( "The public can see me!" );
+            },
+            publicProperty: "I am also public variable",
+
+            getRandomNumber: function () {
+                return privateRandomNumber;
+            }
+        };
+    };
+
+    return {    //Prvo ovde udje kad se pozove singleton, tj udje u getInstance() metod
+        // Get the Singleton instance if one exists
+        // or create one if it doesn't
+
+        getInstance: function () {
+
+            if( !instance ) { //ako nije definisana
+                instance = init();
+            }
+
+            return instance;
+        }
+    };
+
+})();
+
+var singleA = mySingleton.getInstance();
+var singleB = mySingleton.getInstance();
+
+//console.log( singleA.getRandomNumber() === singleB.getRandomNumber());
+
+//In practice, the Singleton pattern is useful when exactly one object is
+//needed to coordinate others across a system
+
+var SingletonTester = (function (){
+    //options: an object containing configuration options for
+    // e.g var options = { name: "test", pointX: 5};
+
+    function Singleton(options) { //konstruktor
+        options = options || {};
+        // set some properties for our singleton
+        this.name = "SingletonTester123";
+        this.pointX = options.pointX || 6;
+        this.pointY = options.pointY || 10;
+    }
+
+    // our instance holder
+    var instance;
+
+    var _static = {
+        // Method for getting an instance. It returns a singleton instance of a singleton object
+        getInstance:function(options){
+            if(instance === undefined){
+                instance = new Singleton(options); //pozivam konstruktor odozgo
+            }
+
+            return instance;
+        }
+    };
+
+    return _static;
+})();
+
+var singletonTest = SingletonTester.getInstance({
+  pointX: 5
+});
+console.log( singletonTest.pointX );
+
+//  IV  OBSERVER PATTERN
+
+//One or more observers are interested in the state of a subject and register their interest with the subject by attaching themselves. When something changes in our subject that the observer may be interested in, a notify message is sent which calls the update method in each observer. When the observer is no longer interested in the subject's state, they can simply detach themselves.
+
+//We can now expand on what we've learned to implement the Observer pattern with the following components:
+    // 1. Subject: maintains a list of observers, facilitates adding or removing observers
+    // 2. Observer: provides a update interface for objects that need to be notified of a Subject's changes of state
+    // 3. ConcreteSubject: broadcasts notifications to observers on changes of state, stores the state of ConcreteObservers
+    // 4. ConcreteObserver: stores a reference to the ConcreteSubject, implements an update interface for the Observer to ensure state is consistent with the Subject's
+
+//First, let's model the list of dependent Observers a subject may have:
+
+function ObserverList() {
+    this.observerList = [];
+}
+
+ObserverList.prototype.add = function(obj){
+    return this.observerList.push(obj);
+};
+
+ObserverList.prototype.count = function(){
+    return this.observerList.length;
+};
+
+ObserverList.prototype.get = function(){
+    if( index > -1 && index < this.observerList.length ){
+        return this.observerList[index];
+    }
+};
+
+ObserverList.prototype.indexOf = function(obj, startIndex){
+    var i = startIndex;
+    while( i < this.observerList.length ) {
+        if(this.observerList[i] === obj) {
+            return i;
+        }
+        i++;
+    }
+    return -1;
+};
+
+ObserverList.prototype.removeAt = function( index ){
+    this.observerList.splice( index, 1 );
+};
+
+//Next, let's model the SUBJECT and the ability to add, remove or notify observers on the observer list.
+
+function Subject(){
+  this.observers = new ObserverList(); //NASLEDJUJE SVE METODE
+}
+
+Subject.prototype.addObserver = function( observer ){
+  this.observers.add( observer );
+};
+
+Subject.prototype.removeObserver = function( observer ){
+  this.observers.removeAt( this.observers.indexOf( observer, 0) );
+};
+
+Subject.prototype.notify = function( context ){
+  var observerCount = this.observers.count();
+  for(var i=0; i < observerCount; i++){
+    this.observers.get(i).update( context );
+  }
+};
+
+//We then define a skeleton for creating new Observers. The update functionality here will be overwritten later with custom behaviour.
+
+// The OBSERVER
+function Observer(){
+  this.update = function(){
+    // ...
+  };
+}
+
+// In our sample application using the above Observer components, we now define:
+
+// A button for adding new observable checkboxes to the page
+// A control checkbox which will act as a subject, notifying other checkboxes they should be checked
+// A container for the new checkboxes being added
+// We then define ConcreteSubject and ConcreteObserver handlers for both adding new observers to the page and implementing the updating interface. See below for inline comments on what these components do in the context of our example.
 
