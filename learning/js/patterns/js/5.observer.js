@@ -95,6 +95,13 @@ function extend( obj, extension ){
 
 // Concrete Observer
 
+// References to our DOM elements
+
+var controlCheckbox = document.getElementById( "mainCheckbox" ),
+    addBtn = document.getElementById( "addNewObserver" ),
+    container = document.getElementById( "observersContainer" );
+
+
 function addNewObserver(){ //prvo ove udje, pa onda prati u ispektoru
 
   // Create a new checkbox to be added
@@ -118,12 +125,6 @@ function addNewObserver(){ //prvo ove udje, pa onda prati u ispektoru
 }
 
 //Odavde krece izvrsavanje
-
-// References to our DOM elements
-
-var controlCheckbox = document.getElementById( "mainCheckbox" ),
-    addBtn = document.getElementById( "addNewObserver" ),
-    container = document.getElementById( "observersContainer" );
 
 // Concrete Subject
 // Extend the controlling checkbox with the Subject class
