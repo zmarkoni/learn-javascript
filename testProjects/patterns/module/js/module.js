@@ -29,16 +29,16 @@ var people = (function() { //sad je sve privatno, ako sklonim ovu funkciju, peop
     $button.on('click', addPerson);
     $ul.delegate('i.del', 'click', deletePerson);
 
-    render();
+    _render(); // donja crta znaci da je metod privatan
 
-    function render(){
+    function _render(){
         $ul.html(Mustache.render(template, {people:people}));
     }
 
     function addPerson(value){ //value from click event
         var name = (typeof value === "string") ? value : $input.val();
         people.push(name);
-        render();
+        _render();
         $input.val('');
     }
 
@@ -51,7 +51,7 @@ var people = (function() { //sad je sve privatno, ako sklonim ovu funkciju, peop
             i = $ul.find('li').index($remove);
         }
         people.splice(i,1);
-        render();
+        _render();
     }
 
     return {
