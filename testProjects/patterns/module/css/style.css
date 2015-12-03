@@ -45,8 +45,27 @@ button {
 button.active {
     background-color:rgb(165, 227, 158);
 }
+h1 {
+    text-align: center;
+}
+
+#statsModule {
+    text-align: center;
+
+}
+
+#statsModule p {
+    width: 100px;
+    background: #EDEDED;
+    color: black;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 20px;
+}
+
 #peopleModule {
     text-align: center;
+    padding: 20px 0;
 }
 #peopleModule ul {
     padding: 0;

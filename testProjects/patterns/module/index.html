@@ -8,26 +8,39 @@
     <link href="css/style.css" rel="stylesheet" />
 </head>
 <body class="body">
-        <div id="peopleModule">
-            <h1>Object literal Design Pattern</h1>
-            <h2>People</h2>
-            <input placeholder="name" type="text">
-            <button id="addPerson">Add Person</button>
-            <ul id="people">
-                <script id="people-template" type="text/template">
-                    {{#people}}
-                    <li>
-                        <span>{{.}}</span>
-                        <i class="del">X</i>
-                    </li>
-                    {{/people}}
-                </script>
-            </ul>
+    <h1>Object literal Design Pattern</h1>
+    <div id="statsModule">
+        <h2>Stats</h2>
+        <div id="statsHolder">
+            <script id="stats-template" type="text/template">
+                {{#people}}
+                    <p>{{.}}</p>
+                {{/people}}
+            </script>
         </div>
+    </div>
+    <div id="peopleModule">
+
+        <h2>People</h2>
+        <input placeholder="name" type="text">
+        <button id="addPerson">Add Person</button>
+        <ul id="people">
+            <script id="people-template" type="text/template">
+                {{#people}}
+                <li>
+                    <span>{{.}}</span>
+                    <i class="del">X</i>
+                </li>
+                {{/people}}
+            </script>
+        </ul>
+    </div>
     <!--scripts-->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js'></script>
 
-    <script src="js/module.js"></script>
+    <script src="js/pubsub.js"></script>
+    <script src="js/module-stats.js"></script>
+    <script src="js/module-people.js"></script>
 </body>
 </html>
