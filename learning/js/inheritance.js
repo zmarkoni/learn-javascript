@@ -1,4 +1,4 @@
-// ===============  Prototype Inheritance - differential =============================================
+// ===============  Object Inheritance - differential =============================================
 
 //Using only objects, no clases !!!
 
@@ -25,7 +25,7 @@ myCat.get_name = function(){
 //print(myCat.name);
 //print(myCat.get_name());
 
-// ===============  Prototype Inheritance - FUNCTIONAL(MODULE) PATTERN   =============================================
+// ===============  Function Inheritance - FUNCTIONAL(MODULE) PATTERN   =============================================
 
 //Using functions !!!
 
