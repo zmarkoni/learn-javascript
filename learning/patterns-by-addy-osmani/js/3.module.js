@@ -89,10 +89,6 @@ var basketModule = (function (){
         console.log("private function!");
     };
 
-    function doSomethingPrivate() {
-
-    };
-
     //return object expose to the public
     return {
         addItem: function(values) {
