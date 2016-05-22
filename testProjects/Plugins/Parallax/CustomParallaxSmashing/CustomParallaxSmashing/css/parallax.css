@@ -1,0 +1,91 @@
+﻿/**
+ * Parallax style
+
+ * Author: Zoran Markovic
+
+ */
+
+#parallax-wrapper {
+
+}
+
+/*section*/
+    .parallax {
+        position: relative;
+        width: 100%!important;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        clear:both;
+        float:left;
+    }
+
+#section1 {
+        height: 251px;
+        z-index: 11;
+    }
+
+    #section2 {
+        background: url(https://s3.amazonaws.com/au-home-dev/test-images/s2.jpg) no-repeat;
+        background-size: 100%;
+        height: 251px;
+        z-index: 12;
+    }
+
+    #section3 {
+        background: url(../images/s3.jpg) no-repeat;
+        background-size: 100%;
+        height: 251px;
+        z-index: 13;
+    }
+
+    #section4 {
+        background: url(https://s3.amazonaws.com/au-home-dev/test-images/s4.jpg) no-repeat;
+        background-size: 100%;
+        height: 251px;
+        z-index: 14;
+    }
+
+    #section5 { /*
+               background: url(/images/contact/contact_bg.jpg) 50% bottom no-repeat fixed;
+           height:1158px!important; 
+               */
+        background: url(https://s3.amazonaws.com/au-home-dev/test-images/s5.jpg) no-repeat;
+        height: 251px;
+        background-size: 100%;
+        z-index: 15;
+    }
+
+/*for desktop*/
+@media (min-width: 720px) {
+
+    #section1 {
+        background:none;
+        height:783px;
+    }
+    #section2,
+    #section3,
+    #section4,
+    #section5 {
+        height: 1180px;
+        background-attachment:fixed;
+        background-position:50% 0;
+        
+    }
+
+    #section3 {
+        height: 405px;
+        background:none;
+    }
+
+    #section3 .section_block{
+        background: url(../images/s3.jpg) no-repeat;
+        width: 100%;
+        float: left;
+        background-position: center;
+        height: 100%;
+    }
+
+}
+
+

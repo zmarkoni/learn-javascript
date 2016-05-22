@@ -1,0 +1,82 @@
+<?php //echo('jsfooter'); ?>
+
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jQuery.easing_v1.3.js')?>"></script>
+<!-- selectivizr is a JavaScript utility that emulates CSS3 pseudo-classes and attribute selectors in Internet Explorer 6-8. 
+Simply include the script in your pages and selectivizr will do the rest. -->
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/selectivizr.js')?>"></script>
+
+<!-- ================= Sliderkit Slider ========================= -->
+<!-- <script type="text/javascript" src="<?php //echo $this->getSkinUrl('js/jquery.sliderkit.1.9.2/jquery.sliderkit.1.9.2.js')?>"></script> -->
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.sliderkit.1.9.2/jquery.sliderkit.1.9.2.pack.js')?>"></script>
+
+<!-- ================= Roundabout ========================= -->
+<!-- <script type="text/javascript" src="<?php //echo $this->getSkinUrl('js/roundabout/jquery.roundabout.js')?>"></script> -->
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/roundabout/jquery.roundabout.min.js')?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/roundabout/roundabout-shapes.js')?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/roundabout/jquery.event.drag-2.2.js')?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/roundabout/jquery.event.drop-2.2.js')?>"></script>          
+            
+<!-- PhotoSwap slider for Mobile version -->			
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/PhotoSwap/klass.min.js')?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/PhotoSwap/code.photoswipe-3.0.5.min.js')?>"></script>  
+    			
+<!-- =============== My Custom Scripts Zoki ======================= -->
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/ltf-scripts/js-desktop.js')?>"></script>
+
+
+<script type="text/javascript">
+
+	$j(document).ready(function() {
+        
+		var ww = document.body.clientWidth;
+		
+		if(ww > 640)
+		{
+				$j('.hp-banner-2 ul').roundabout({
+					btnNext: ".next",
+					btnPrev: ".prev",
+					shape: 'tearDrop',           
+					clickToFocus:true        
+				});
+
+				//autoplay: true,
+				  //  autoplayPauseOnHover: true,
+				 //   autoplayDuration: 2000
+		}//desktop www>640
+	   
+		if (ww < 960){ //Responsive view
+            $j.getScript("/skin/frontend/sambopackage/samboTheme/js/ltf-scripts/js-responsive.js");
+			/*  ============ Use only for testing!!! =============== 
+				.done(function(script, textStatus) {
+				  console.log( textStatus );
+				})
+				.fail(function(jqxhr, settings, exception) {
+				  alert('error');
+				});
+			*/	
+        }
+		
+		if(ww < 769){//end of desktop view - tablet
+			$j.getScript("/skin/frontend/sambopackage/samboTheme/js/ltf-scripts/js-tablet.js");
+		}
+		
+		if( ww < 641){ //main container desktop
+            $j.getScript("/skin/frontend/sambopackage/samboTheme/js/ltf-scripts/js-mobile.js");
+        }
+		
+		if(ww < 481){//end of desktop view
+			$j('#PhotoSwipeTarget').height(320);
+		}
+
+		if(ww < 321){//end of desktop view
+			$j('#PhotoSwipeTarget').height(180);
+		}
+
+	
+		
+	});	//$j(document).ready
+	
+	
+</script>
+
+
