@@ -84,7 +84,7 @@ Imagine we have the following handler prior to adding any timers:
 
     new SuperMenu(document.body);
 
-    console.log('zoki');
+    console.log('zoki 123');
 
 
 
