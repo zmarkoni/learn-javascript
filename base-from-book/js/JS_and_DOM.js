@@ -1,11 +1,13 @@
-﻿//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Prototype-based_programming
+﻿"use strict"
+
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Prototype-based_programming
 
 //============= Check if broweser support javascript=============
 var feature = {
-    addEventListener: !!window.addEventListener,
-    querySelectorAll: !!document.querySelectorAll
+    addEventListener: window.addEventListener,
+    querySelectorAll: document.querySelectorAll
 };
-//console.log(feature.addEventListener);
+console.log(feature.addEventListener);
 
 //we detect if these features are supported by using this simple "if" statement below. If they aren’t supported,
 //the browser won’t execute any of this code:
@@ -25,18 +27,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //============= Selectors API======================
 
-var element1 = document.guerySelector("div");
+// var element1 = document.guerySelector("div");
 var element2 = document.querySelector(".some-class");
 var element3 = document.querySelectorAll(".container div");
 var element4 = document.getElementById("someID");
 
 var nav = document.querySelector("nav");
-var links = nav.querySelectorAll("a");
+// var links = nav.querySelectorAll("a");
 
 //============= Understanding nodeType, nodeName and NodeValue ======
-element1.nodeType
-element1.nodeName
-element1.atributes
+
+// element1.nodeType
+// element1.nodeName
+// element1.atributes
 
 
 
@@ -61,17 +64,17 @@ var lastEl = document.querySelector("div").lastElementChild;
 var element = document.querySelector(".some-class");
 
 // Give(replace) current class with "foo" to the element
-element.className = "foo";
+// element.className = "foo";
 
 //Adding a class without replacing the current classes:
-element.className += " foo"; // obrati paznju na razmak
+// element.className += " foo"; // obrati paznju na razmak
 
 //removing only certain classes
 
 // removeClass, takes two params: element and classname
 function removeClass(el, cls) {
     var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
-    el.className = el.className.replace(reg, " ").replace(/(^\s*)|(\s*$)/g, "");
+    // el.className = el.className.replace(reg, " ").replace(/(^\s*)|(\s*$)/g, "");
 }
 
 removeClass(element, "foo");
@@ -79,7 +82,7 @@ removeClass(element, "foo");
 //If you also want to check an element against some class, kind of like jQuery’s hasClass works, you could add this in your utils:
 // hasClass, takes two params: element and classname
 function hasClass(el, cls) {
-    return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
+    // return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
 }
 // Check if an element has class "foo"
 if (hasClass(element, "foo")) {
@@ -97,20 +100,20 @@ if ("classList" in document.documentElement) {
 
 //Adding, removing and toggling classes with classList:
 // Adding a class
-element.classList.add("bar");
+// element.classList.add("bar");
 
 // Removing a class
-element.classList.remove("foo");
+// element.classList.remove("foo");
 
 // Checking if has a class
-element.classList.contains("foo");
+// element.classList.contains("foo");
 
 // Toggle a class
-element.classList.toggle("active");
+// element.classList.toggle("active");
 
 var element = document.querySelector("#test");
-element.classList.add("two");
-element.classList.remove("four");
+// element.classList.add("two");
+// element.classList.remove("four");
 
 //============Manipulating the DOM ===================
 //Below, we have an example that selects an element from the DOM, clones it, manipulates the clone’s styles with
@@ -120,21 +123,21 @@ element.classList.remove("four");
 var element = document.querySelector(".class");
 
 // Clone it
-var clone = element.cloneNode(true);
-
-// Do some manipulation off the DOM
-clone.style.background = "#000";
-
-// Replaces the original element with the new cloned one
-element.parentNode.replaceChild(clone, element);
+// var clone = element.cloneNode(true);
+//
+// // Do some manipulation off the DOM
+// clone.style.background = "#000";
+//
+// // Replaces the original element with the new cloned one
+//element.parentNode.replaceChild(clone, element);
 
 //If you don’t want to replace anything in the DOM, but instead append the newly created div inside the <body>,
 //you could do it like this:
 
-document.body.appendChild(clone);
+//document.body.appendChild(clone);
 
 //======================Determining Max-Width of Responsive Images in JS==================
-var maxWidth = img.naturalWidth;
+//var maxWidth = img.naturalWidth;
 
 //for older browsers we need to get data from image by loading the image into an in-memory object
 //But first we need to check if image is loaded like this
@@ -255,9 +258,9 @@ var foo = function () { };
 var sampleObject = { x:1, y:2, z:3  };
 
 //1. for in
-for (property in sampleObject) {
-  alertText += property + ':' + sampleObject[property]+'; ';
-}
+// for (property in sampleObject) {
+//   alertText += property + ':' + sampleObject[property]+'; ';
+// }
 //alert(alertText);
 
 //2. JSON.stringify
