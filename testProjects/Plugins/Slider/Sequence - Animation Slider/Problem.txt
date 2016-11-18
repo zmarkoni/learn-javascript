@@ -1,4 +1,0 @@
-Kad hocu velike slike da mi imaju opacity transition, a ne da idu levo - desno,
-onda moram da ukljucim opciju:
-
-fadeFrameWhenSkipped:false

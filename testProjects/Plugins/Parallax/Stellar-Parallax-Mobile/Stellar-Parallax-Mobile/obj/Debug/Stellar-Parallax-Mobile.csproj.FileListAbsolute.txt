@@ -1,5 +1,0 @@
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Parallax\Stellar-Parallax-Mobile\Stellar-Parallax-Mobile\bin\Stellar-Parallax-Mobile.dll
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Parallax\Stellar-Parallax-Mobile\Stellar-Parallax-Mobile\bin\Stellar-Parallax-Mobile.pdb
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Parallax\Stellar-Parallax-Mobile\Stellar-Parallax-Mobile\obj\Debug\Stellar-Parallax-Mobile.csprojResolveAssemblyReference.cache
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Parallax\Stellar-Parallax-Mobile\Stellar-Parallax-Mobile\obj\Debug\Stellar-Parallax-Mobile.dll
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Parallax\Stellar-Parallax-Mobile\Stellar-Parallax-Mobile\obj\Debug\Stellar-Parallax-Mobile.pdb

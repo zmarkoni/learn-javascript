@@ -1,5 +1,0 @@
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\FractionSlider\FractionSlider\FractionSlider\bin\FractionSlider.dll
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\FractionSlider\FractionSlider\FractionSlider\bin\FractionSlider.pdb
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\FractionSlider\FractionSlider\FractionSlider\obj\Debug\FractionSlider.csprojResolveAssemblyReference.cache
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\FractionSlider\FractionSlider\FractionSlider\obj\Debug\FractionSlider.dll
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\FractionSlider\FractionSlider\FractionSlider\obj\Debug\FractionSlider.pdb

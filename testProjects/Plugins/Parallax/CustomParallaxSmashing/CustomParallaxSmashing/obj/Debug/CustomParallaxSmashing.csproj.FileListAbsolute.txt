@@ -1,5 +1,0 @@
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Parallax\CustomParallaxSmashing\CustomParallaxSmashing\bin\CustomParallaxSmashing.dll
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Parallax\CustomParallaxSmashing\CustomParallaxSmashing\bin\CustomParallaxSmashing.pdb
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Parallax\CustomParallaxSmashing\CustomParallaxSmashing\obj\Debug\CustomParallaxSmashing.csprojResolveAssemblyReference.cache
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Parallax\CustomParallaxSmashing\CustomParallaxSmashing\obj\Debug\CustomParallaxSmashing.dll
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Parallax\CustomParallaxSmashing\CustomParallaxSmashing\obj\Debug\CustomParallaxSmashing.pdb

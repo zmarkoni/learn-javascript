@@ -1,7 +1,0 @@
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Bootstrap\Bootstrap\Bootstrap\bin\Bootstrap.dll
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Bootstrap\Bootstrap\Bootstrap\bin\Bootstrap.pdb
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Bootstrap\Bootstrap\Bootstrap\obj\Debug\Bootstrap.csprojResolveAssemblyReference.cache
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Bootstrap\Bootstrap\Bootstrap\obj\Debug\Bootstrap.Properties.Resources.resources
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Bootstrap\Bootstrap\Bootstrap\obj\Debug\Bootstrap.csproj.GenerateResource.Cache
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Bootstrap\Bootstrap\Bootstrap\obj\Debug\Bootstrap.dll
-C:\Users\ZORAN\Documents\Visual Studio 2012\Projects\Plugins\Bootstrap\Bootstrap\Bootstrap\obj\Debug\Bootstrap.pdb
