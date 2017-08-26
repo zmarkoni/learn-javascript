@@ -4,16 +4,19 @@
 
 //============= Check if broweser support javascript=============
 var feature = {
-    addEventListener: window.addEventListener,
-    querySelectorAll: document.querySelectorAll
+    addEventListener: !!window.addEventListener,
+    querySelectorAll: !!document.querySelectorAll
 };
-console.log(feature.addEventListener);
+// console.log(feature.addEventListener);
+
+// ( !! ) -> it forces an object with a boolean type
 
 //we detect if these features are supported by using this simple "if" statement below. If they aren’t supported,
 //the browser won’t execute any of this code:
 
 if (feature.addEventListener && feature.querySelectorAll) {
     //this.init();
+    //console.log('addEventListener and querySelectorAll is supported!!!');
 }
 
 //These two tests make sure that we have a native way of using CSS selectors in our JavaScript (querySelectorAll),
@@ -22,15 +25,14 @@ if (feature.addEventListener && feature.querySelectorAll) {
 //$(document).ready(function(){});
 document.addEventListener("DOMContentLoaded", function () {
     //code
-
+    //console.log(' "DOMContentLoaded" is loaded!!!');
 }, false);
 
 //============= Selectors API======================
 
-// var element1 = document.guerySelector("div");
-var element2 = document.querySelector(".some-class");
-var element3 = document.querySelectorAll(".container div");
-var element4 = document.getElementById("someID");
+var element2 = document.querySelector(".body");
+// var element3 = document.querySelectorAll(".body div");
+var element4 = document.getElementById("wrapper");
 
 var nav = document.querySelector("nav");
 // var links = nav.querySelectorAll("a");

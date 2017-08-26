@@ -1,2 +1,5 @@
-var element1 = document.querySelector("body");
-console.log(element1.atributes);
+for (var i = 5; i < 10; i++) {
+    (function (x) {
+        console.log(x)
+    })(i);
+}
