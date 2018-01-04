@@ -1,0 +1,139 @@
+{
+  "name": "vanilla-es6-jspm",
+  "version": "0.10.3",
+  "description": "Seed project for ES6 / jspm based apps with full production workflow",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/gulp serve",
+    "test": "./node_modules/.bin/gulp jshint --env test && ./node_modules/.bin/gulp htmlhint --env test && ./node_modules/.bin/karma start --single-run --browsers PhantomJS --capture-console false",
+    "test-unit": "./node_modules/.bin/karma start",
+    "postinstall": "./node_modules/.bin/jspm install && npm run webdriver-manager-update",
+    "test-build": "./bin/test-build.sh",
+    "test-e2e": "./node_modules/.bin/protractor protractor.config.js",
+    "forever-start-test": "echo \"Launching server (test mode) ...\" && ./node_modules/.bin/forever start ./test/forever.gulp.serve.test.json",
+    "forever-stop-test": "echo \"Stopping script (test mode) ...\" && ./node_modules/.bin/forever stop gulp.serve.test",
+    "forever-start-dist": "echo \"Launching server (dist mode) ...\" && ./node_modules/.bin/forever start ./test/forever.gulp.serve.dist.json",
+    "forever-stop-dist": "echo \"Stopping script (dist mode) ...\" && ./node_modules/.bin/forever stop gulp.serve.dist",
+    "forever-stopall": "echo \"Stopping all script ...\" && ./node_modules/.bin/forever stopall",
+    "forever-list": "./node_modules/.bin/forever list",
+    "test-e2e-standalone": "npm run forever-start-test && sleep 4 && npm run test-e2e && npm run forever-stop-test",
+    "webdriver-manager-update": "./node_modules/.bin/webdriver-manager update",
+    "yuidoc": "./node_modules/.bin/yuidoc",
+    "build-prod": "gulp build --with-docs"
+  },
+  "pre-commit": [
+    "test"
+  ],
+  "pre-push": [
+    "test-build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/topheman/vanilla-es6-jspm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/topheman/vanilla-es6-jspm/issues"
+  },
+  "keywords": [
+    "ES6",
+    "jspm",
+    "gulp"
+  ],
+  "author": "Christophe Rosset",
+  "license": "MIT",
+  "jspm": {
+    "configFile": "jspm.config.js",
+    "dependencies": {
+      "bootstrap-sass": "npm:bootstrap-sass@3.3.5",
+      "clean-css": "npm:clean-css@^3.3.9",
+      "css": "github:systemjs/plugin-css@^0.1.17",
+      "fetch-polyfill": "npm:fetch-polyfill@^0.8.1",
+      "text": "github:systemjs/plugin-text@^0.0.2"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  },
+  "devDependencies": {
+    "babel": "^5.8.12",
+    "browser-sync": "^2.11.1",
+    "chromedriver": "^2.27.3",
+    "colors": "^1.1.2",
+    "connect-modrewrite": "^0.8.5",
+    "del": "^2.0.1",
+    "forever": "^0.15.1",
+    "git-rev-sync": "^1.3.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.0.1",
+    "gulp-bytediff": "^1.0.0",
+    "gulp-cache": "^0.4.2",
+    "gulp-changed": "^1.2.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-filter": "^3.0.0",
+    "gulp-footer": "^1.0.5",
+    "gulp-header": "^1.2.2",
+    "gulp-htmlhint": "^0.3.1",
+    "gulp-if": "^2.0.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-minify-html": "^1.0.4",
+    "gulp-rev": "^7.0.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-size": "^2.0.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.5.2",
+    "gulp-usemin": "^0.3.20",
+    "gulp-util": "^3.0.5",
+    "jasmine-core": "^2.3.4",
+    "jasmine-spec-reporter": "^2.4.0",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.0.0",
+    "jspm": "^0.16.27",
+    "karma": "^0.13.3",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-html2js-preprocessor": "^0.1.0",
+    "karma-jasmine": "^0.3.7",
+    "karma-jspm": "^2.0.1-beta.1",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-safari-launcher": "^0.1.1",
+    "karma-spec-reporter": "0.0.24",
+    "lodash": "^3.10.1",
+    "minimist": "^1.1.3",
+    "moment": "^2.11.2",
+    "phantomjs-polyfill": "0.0.1",
+    "phantomjs-prebuilt": "^2.1.4",
+    "pre-commit": "^1.1.1",
+    "pre-push": "^0.1.1",
+    "protractor": "^3.1.1",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.2",
+    "systemjs-builder": "^0.15.7",
+    "yuidocjs": "^0.10.0"
+  },
+  "yuidoc": {
+    "options": {
+      "linkNatives": "true",
+      "attributesEmit": "false",
+      "selleck": "false",
+      "paths": [
+        "./src/app"
+      ],
+      "outdir": "./build/docs",
+      "themedir": "./extras/yuidoc-theme-topheman"
+    }
+  },
+  "config": {
+    "port": 9000,
+    "isAngular": false
+  },
+  "engines": {
+    "node": ">=4.2.x",
+    "npm": ">=2.0.0"
+  }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vanilla-es6-jspm</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="apple-touch-icon-precomposed" sizes="128x128" href="./favicon-128x128.png">
+  <!-- build:css(.tmp) styles/main.min.css -->
+  <link rel="stylesheet" href="styles/main.css"/>
+  <!-- endbuild -->
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+</head>
+<body class="index-page">
+<div class="container">
+
+  <header>
+    <h1>vanilla-es6-jspm</h1>
+    <ul class="site-networks">
+      <li class="twitter">
+        <a href="https://twitter.com/topheman" title="@topheman on twitter">
+          <span class="icon"></span>
+          <span class="desc">Twitter</span>
+        </a>
+      </li>
+      <li class="github">
+        <a href="https://github.com/topheman/vanilla-es6-jspm" title="Fork on github">
+          <span class="icon"></span>
+          <span class="desc">Github</span>
+        </a>
+      </li>
+    </ul>
+  </header>
+
+  <div class="jumbotron">
+    <div class="container">
+      <img src="images/javascript.png" class="pull-right" />
+      <h1>Welcome</h1>
+      <p>A&nbsp;<strong>vanillaJS/ES6/jspm</strong> project boilerplate, with the following features:</p>
+      <ul>
+        <li>jspm/ES6 integration</li>
+        <li>gulp tasks (written in ES6) for :</li>
+        <ul>
+          <li>watch / livereload</li>
+          <li>sass</li>
+          <li>jshint / htmlhint</li>
+          <li>build</li>
+        </ul>
+        <li>unit tests (written in ES6) with karma</li>
+        <li><acronym title="end to end tests">e2e tests</acronym> (written in ES6) with protractor</li>
+        <li>continuous integration</li>
+        <ul>
+          <li>Travis CI</li>
+          <li>SauceLabs</li>
+        </ul>
+        <li>automated documentation generation</li>
+      </ul>
+      <p><a href="https://github.com/topheman/vanilla-es6-jspm/wiki" title="About vanilla-es6-jspm on github">Learn more on github ...</a></p>
+      <p>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://topheman.github.io/vanilla-es6-jspm" data-text="Project boilerplate for #ES6 #Jspm based apps w/ full production workflow #gulp #continuousintegration" data-via="topheman" data-size="large" data-count="none"><span style="display: none;">Tweet</span></a>
+      </p>
+    </div>
+  </div>
+
+  <div id="geolocation"></div>
+
+  <div id="test"></div>
+
+  <footer class="footer">
+    <p class="text-center">
+      ©2015 <a href="http://labs.topheman.com/">labs.topheman.com</a> - Christophe Rosset
+    </p>
+  </footer>
+</div>
+
+<!-- build:js(.) scripts/app.bootstrap.build.js -->
+<!-- inject:js -->
+<!-- endinject -->
+<!-- endbuild -->
+
+<!-- build:remove -->
+<script src="jspm_packages/system.js"></script>
+<script src="jspm.config.js"></script>
+<!-- don't remove the tag bellow, it's changed on gulp serve task by browserSync, injecting jspm configuration overrides -->
+<!-- inject-browser-sync -->
+<script>
+  System.import('app/bootstrap.js').catch(console.error.bind(console)); // make sure any errors are print to console
+</script>
+<!-- endbuild -->
+<!-- inject:analytics -->
+<!-- endinject -->
+<!-- twitter share button init (added at the very end so that it won't block app scripts in production - @todo possible to optimize a little more ...) -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</body>
+</html>

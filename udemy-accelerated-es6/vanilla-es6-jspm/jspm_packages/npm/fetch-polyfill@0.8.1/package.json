@@ -1,0 +1,23 @@
+{
+  "name": "fetch-polyfill",
+  "version": "0.8.1",
+  "main": "fetch.js",
+  "repository": "undoZen/fetch",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://mit-license.org/undozen"
+    }
+  ],
+  "devDependencies": {
+    "browserify": "^9.0.8",
+    "es6-promise": "^2.1.1",
+    "isarray": "0.0.1",
+    "jshint": "2.5.2",
+    "mocha": "2.1.0"
+  },
+  "files": [
+    "LICENSE",
+    "fetch.js"
+  ]
+}

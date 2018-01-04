@@ -1,0 +1,1 @@
+module.exports = require("npm:bootstrap-sass@3.3.5/assets/javascripts/bootstrap.js");
