@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- traceur.js by google for compiling ES6 -> ES5 -->
+  <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.2/system.js"></script>
+  <script type="text/javascript">
+    System.import('./app.js');
+  </script>
+</head>
+
+<body>
+  <div id="main">
+    There are two important Rules, which you need to understand if you're working with ES6 Modules:
+      Modules are always in Strict Mode (no need to define "use strict")
+      Modules don't have a shared, global Scope.
+      Instead each Module has its own Scope
+  </div>
+</body>
+
+</html>
