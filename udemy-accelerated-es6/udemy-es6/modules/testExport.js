@@ -1,1 +1,1 @@
-export let exportFromTest = 'testing export with key reference';
+let exportFromTest = 'testing export with key reference';

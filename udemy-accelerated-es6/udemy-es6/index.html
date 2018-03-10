@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <!-- traceur.js by google for compiling ES6 -> ES5 -->
-  <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.2/system.js"></script>
-  <script type="text/javascript">
-    System.import('./app.js');
-  </script>
+    <head>
+    <!-- traceur.js by google for compiling ES6 -> ES5 -->
+    <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.2/system.js"></script>
+    <script type="text/javascript">
+        //System.import('./app.js');
+    </script>
 </head>
+    <body>
+        <div id="main">
+            There are two important Rules, which you need to understand if you're working with ES6 Modules:
+            Modules are always in Strict Mode (no need to define "use strict")
+            Modules don't have a shared, global Scope.
+            Instead each Module has its own Scope
+        </div>
 
-<body>
-  <div id="main">
-    There are two important Rules, which you need to understand if you're working with ES6 Modules:
-      Modules are always in Strict Mode (no need to define "use strict")
-      Modules don't have a shared, global Scope.
-      Instead each Module has its own Scope
-  </div>
-</body>
+        <h2>Test basics</h2>
+        <button>button</button>
 
+        <h3>Great links</h3>
+        <ul>
+            <li>
+                <a href="https://github.com/zmarkoni/modern-js-cheatsheet" target="_blank">modern-js-cheatsheet</a>
+            </li>
+        </ul>
+
+        <!-- Basics -->
+        <!--<script type="text/javascript" src="basics/1-let.js"></script>-->
+        <!--<script type="text/javascript" src="basics/2-const.js"></script>-->
+        <!--<script type="text/javascript" src="basics/3-hoisting.js"></script>-->
+        <!--<script type="text/javascript" src="basics/4-functions.js"></script>-->
+        <!--<script type="text/javascript" src="basics/5-objects.js"></script>-->
+        <!--<script type="text/javascript" src="basics/6-rest-and-spread.js"></script>-->
+        <!--<script type="text/javascript" src="basics/7-loops.js"></script>-->
+        <!--<script type="text/javascript" src="basics/8-template-literals.js"></script>-->
+        <!--<script type="text/javascript" src="basics/9-destructuring-arrays.js"></script>-->
+        <!--<script type="text/javascript" src="basics/10-destructuring-objects.js"></script>-->
+
+        <!-- Modules are included in app.js -->
+    </body>
 </html>
