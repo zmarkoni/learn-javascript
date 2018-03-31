@@ -14,7 +14,7 @@
 //     },
 //     function (error) { // handle reject
 //         console.log(error);
-//     },
+//     }
 // );
 
 // Chaining promises
@@ -101,13 +101,13 @@
 
 // setTimeout(() => saySomething("Hey Zoki"), 1000);
 
-function saySomething(val) {
-  console.log('saySomething: ' + val);
-}
-
-function failureCallback() {
-  console.log('failureCallback');
-}
+// function saySomething(val) {
+//   console.log('saySomething: ' + val);
+// }
+//
+// function failureCallback() {
+//   console.log('failureCallback');
+// }
 
 // Evo kako mozemo zameniti setTimeout sa Promisom
 /*
@@ -117,10 +117,22 @@ or contains a programming error, nothing catches it.
 Luckily we can wrap it in a promise. Best practice is to wrap problematic functions
 at the lowest possible level, and then never call them directly again:
 */
-const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+//const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // ms = 2000
-wait(2000).then(() => saySomething("setTimeout with promise")).catch(failureCallback);
+// wait(2000)
+//     .then(() => saySomething("setTimeout with promise"))
+//     .catch(failureCallback);
+
+//===========
+// function msgAfterTimeout(msg, who, timeout) {
+//     return new Promise(function (resolve, reject) {
+//       return setTimeout( () => resolve(`${msg} Hello ${who}!`), timeout)
+//     })
+// }
+// msgAfterTimeout("", "Foo", 1000)
+//     .then( msg => msgAfterTimeout(msg, "Bar", 2000))
+//     .then( msg => { console.log(`done after 3000ms:${msg}`)});
 
 //================================================================================
 //=========== FETCH ==============================================================
@@ -128,19 +140,50 @@ wait(2000).then(() => saySomething("setTimeout with promise")).catch(failureCall
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+// https://developers.google.com/web/updates/2015/03/introduction-to-fetch
 // fetch already return PROMISE
 
-// fetch('https://jsonplaceholder.typicode.com/posts/1')
-//   .then(response => response.json())
-//   .then(json => console.log(json))
+// const resourceUrl = 'https://jsonplaceholder.typicode.com/posts/1';
+//
+// function status(response) {
+//     if(response.status >=200 && response.status < 300) {
+//         return Promise.resolve(response)
+//     }
+//     else {
+//         return Promise.reject(new Error(response.status))
+//     }
+// }
+//
+// function json(response) {
+//     return response.json()
+// }
+//
+// fetch(resourceUrl)
+//     .then(status)
+//     .then(json)
+//     .then(result => console.log(result))
+//     .catch(error => console.log(error));
 
-// same like above!!!
+//same like above!!!
 
 // function getData(url) {
 //     return fetch(url)
 //         .then(response => response.json())
 //         .then(json => console.log(json))
 // }
+
+//getData(resourceUrl);
+
+// using Ajax
+// function getDataFromServer(resourceUrl) {
+//     return new Promise((resolve, reject) => {
+//         // use jQuery Ajax
+//         $.ajax({
+//           url: resourceUrl,
+//           dataType: "json",
+//         }).done(resolve).fail(reject);
+//     });
+// };
 //
-// const url = 'https://jsonplaceholder.typicode.com/posts/1';
-// getData(url);
+// getDataFromServer(resourceUrl).
+//     then(result => console.log(result.id));

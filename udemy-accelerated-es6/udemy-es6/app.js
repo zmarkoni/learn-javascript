@@ -63,18 +63,24 @@
 /*========================================================
 ==================iterators and generators=======================
 ==========================================================*/
-//import * as ig from './modules/3-iterators_generators.js';
+//import * as ig from './modules/3-iterators-generators.js';
 
 /*========================================================
 ================== promises ==============================
 ==========================================================*/
-import * as promises from './modules/4-promises_and_fetch.js';
+//import * as promises from './modules/4-promises-and-fetch.js';
 
 /*========================================================
-==================maps and sets=======================
+================== extensions-of-built-in-objects =======================
+==========================================================*/
+import * as ms from './modules/5-extensions-of-built-in-objects.js';
+
+
+/*========================================================
+================== maps and sets =======================
 ==========================================================*/
 
-//import * as ms from './modules/5-maps_and_sets.js';
+//import * as ms from './modules/6-maps-and-sets.js';
 
 
 
