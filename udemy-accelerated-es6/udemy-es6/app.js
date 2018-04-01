@@ -73,7 +73,7 @@
 /*========================================================
 ================== extensions-of-built-in-objects =======================
 ==========================================================*/
-import * as ms from './modules/5-extensions-of-built-in-objects.js';
+//import * as ms from './modules/5-extensions-of-built-in-objects.js';
 
 
 /*========================================================
