@@ -16,7 +16,6 @@ export class Http {
     }
 
     // or we can use FETCH
-
     static status(response) {
         if(response.status >=200 && response.status < 300) {
             return Promise.resolve(response)

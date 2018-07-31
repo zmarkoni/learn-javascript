@@ -9,7 +9,7 @@
 // });
 //
 // promise.then( // execute promise, with VALUE received from promise
-//     function (value) { // handle received data from resolve
+//     function` (value) { // handle received data from resolve
 //         console.log(value);
 //     },
 //     function (error) { // handle reject
@@ -143,47 +143,47 @@ at the lowest possible level, and then never call them directly again:
 // https://developers.google.com/web/updates/2015/03/introduction-to-fetch
 // fetch already return PROMISE
 
-// const resourceUrl = 'https://jsonplaceholder.typicode.com/posts/1';
-//
-// function status(response) {
-//     if(response.status >=200 && response.status < 300) {
-//         return Promise.resolve(response)
-//     }
-//     else {
-//         return Promise.reject(new Error(response.status))
-//     }
-// }
-//
-// function json(response) {
-//     return response.json()
-// }
-//
-// fetch(resourceUrl)
-//     .then(status)
-//     .then(json)
-//     .then(result => console.log(result))
-//     .catch(error => console.log(error));
+const resourceUrl = 'https://jsonplaceholder.typicode.com/posts/1';
 
-//same like above!!!
+function status(response) {
+    if(response.status >=200 && response.status < 300) {
+        return Promise.resolve(response)
+    }
+    else {
+        return Promise.reject(new Error(response.status))
+    }
+}
 
-// function getData(url) {
-//     return fetch(url)
-//         .then(response => response.json())
-//         .then(json => console.log(json))
-// }
+function json(response) {
+    return response.json()
+}
 
-//getData(resourceUrl);
+fetch(resourceUrl)
+    .then(status)
+    .then(json)
+    .then(result => console.log(result))
+    .catch(error => console.log(error));
 
-// using Ajax
-// function getDataFromServer(resourceUrl) {
-//     return new Promise((resolve, reject) => {
-//         // use jQuery Ajax
-//         $.ajax({
-//           url: resourceUrl,
-//           dataType: "json",
-//         }).done(resolve).fail(reject);
-//     });
-// };
-//
-// getDataFromServer(resourceUrl).
-//     then(result => console.log(result.id));
+same like above!!!
+
+function getData(url) {
+    return fetch(url)
+        .then(response => response.json())
+        .then(json => console.log(json))
+}
+
+getData(resourceUrl);
+
+//using Ajax
+function getDataFromServer(resourceUrl) {
+    return new Promise((resolve, reject) => {
+        // use jQuery Ajax
+        $.ajax({
+          url: resourceUrl,
+          dataType: "json",
+        }).done(resolve).fail(reject);
+    });
+};
+
+getDataFromServer(resourceUrl).
+    then(result => console.log(result.id));

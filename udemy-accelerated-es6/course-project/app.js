@@ -32,10 +32,11 @@ function searchWeather() {
         .then(Http.json)
         .then(responseData => {
             const WEATHER_DATA = new WeatherData(CITY_NAME, responseData.weather[0].description.toUpperCase());
-            const WEATHER_POXY = new Proxy(WEATHER_DATA, WEATHER_PROXY_HANDLER);
-            WEATHER_POXY.temperature = responseData.main.temp;
+            //const WEATHER_POXY = new Proxy(WEATHER_DATA, WEATHER_PROXY_HANDLER);
+            // WEATHER_POXY.temperature = responseData.main.temp;
+            WEATHER_DATA.temperature = responseData.main.temp;
 
-            updateWeather(WEATHER_POXY);
+            updateWeather(WEATHER_DATA);
         })
         .catch(error => alert(error));
 }
@@ -43,7 +44,7 @@ function searchWeather() {
 function updateWeather(weatherData) {
     ELEMENTS.ELEMENT_WEATHER_CITY.textContent = weatherData.cityName;
     ELEMENTS.ELEMENT_WEATHER_DESCRIPTION.textContent = weatherData.description;
-    ELEMENTS.ELEMENT_WEATHER_TEMPERATURE.textContent = weatherData.temperature;
+    ELEMENTS.ELEMENT_WEATHER_TEMPERATURE.textContent = weatherData.temperature.toFixed(2) + ' C';
 
     ELEMENTS.ELEMENT_LOADING_TEXT.style.display = 'none';
     ELEMENTS.ELEMENT_WEATHER_BOX.style.display = 'block';
