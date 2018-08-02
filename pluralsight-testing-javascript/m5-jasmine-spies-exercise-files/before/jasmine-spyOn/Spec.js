@@ -26,5 +26,14 @@ describe("Spies", function() {
 		expect(myObj.getQuantity()).toEqual(10); // this will work
     });
 
+    // create fake implementation of a function
+    it('should spy on getQuantity fake', function () {
+		var spy = spyOn(myObj, 'getQuantity').andCallFake(function () {
+			console.log('returning 20');
+			return 20;
+        });
+		expect(myObj.getQuantity()).toEqual(20);
+    });
+
 });
 
