@@ -79,5 +79,19 @@ describe("Spies", function() {
 		expect(spy.argsForCall[1][0]).toEqual(20);
     });
 
+    // Jasmine Utility methods
+
+	// jasmine.isSpy check if a method is a spy
+    it('should work woth utility methods', function () {
+		var spy = jasmine.createSpy('a spy');
+		expect(jasmine.isSpy(spy)).toEqual(true);
+
+		spy();
+		spy.reset();
+		expect(spy.callCount).toEqual(0);
+    });
+
+    // reset which methods on spy's
+
 });
 
