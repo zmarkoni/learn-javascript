@@ -1,3 +1,5 @@
+// Jasmine Spy is mainly used for callBack Functions
+
 function callMyCallback(cb) {
 	cb();
 }
