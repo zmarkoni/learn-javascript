@@ -15,18 +15,20 @@ var myObj = {
 
 describe("Spies", function() {
 
+	// Check if callBack function is called
     it('should spy on save', function () {
 		var spy = spyOn(myObj, 'save');
 		myObj.save(); // like this we are actually call spy!
 		expect(spy).toHaveBeenCalled();
     });
 
+    // andReturn -> Check return of a function
     it('should spy on getQuantity', function () {
 		var spy = spyOn(myObj, 'getQuantity').andReturn(10);
 		expect(myObj.getQuantity()).toEqual(10); // this will work
     });
 
-    // create fake implementation of a function
+    // andCallFake -> create fake implementation of a function
     it('should spy on getQuantity fake', function () {
 		var spy = spyOn(myObj, 'getQuantity').andCallFake(function () {
 			console.log('returning 20');
@@ -34,6 +36,28 @@ describe("Spies", function() {
         });
 		expect(myObj.getQuantity()).toEqual(20);
     });
+
+    // andCallThrough
+    // monitor how much time function is called
+	// monitor arguments that are passed 
+    it('should spy on getQuantity callThrow', function () {
+		var spy = spyOn(myObj, 'getQuantity').andCallThrough(function () {
+			expect(myObj.getQuantity()).toEqual(5);
+			expect(spy).toHaveBeenCalled();
+        });
+    });
+
+    // spy throw error, sta se desava kad baci gresku
+	it('should spy on getQuantity Throw', function () {
+		var spy = spyOn(myObj, 'getQuantity').andThrow(new Error('problem'));
+			var qty;
+			try {
+				gty = myObj.getQuantity();
+			} catch (ex) {
+				qty = 100; // catch error and set nnew value
+			}
+			expect(qty).toEqual(100);
+	});
 
 });
 
