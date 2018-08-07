@@ -63,6 +63,9 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: false // false means that Karma will behave like watcher
   });
 };
+
+// To launch Karma, go to pluralsight-testing-javascript/m7-utilities-exercise-files/demos/Finished/karma/karma.conf.js
+// karma start
