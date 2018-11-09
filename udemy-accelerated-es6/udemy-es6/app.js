@@ -9,9 +9,9 @@
 // == Modules are always in Strict Mode (no need to define "use strict")
 // == Modules don't have a shared, global Scope. Instead each Module has its own Scope
 
-// import { testVariable, testFunc } from './modules/1-external.js';
-// console.log(testVariable);
-// testFunc();
+import { testVariable, testFunc } from './modules/1-external.js';
+console.log(testVariable);
+testFunc();
 
 // == import default, no need brackets, can be different name
 // import AB from './modules/1-external.js'
