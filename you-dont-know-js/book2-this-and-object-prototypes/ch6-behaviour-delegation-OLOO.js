@@ -112,3 +112,5 @@ $( document ).ready( function(){
 	btn1.render( $body );
 	btn2.render( $body );
 } );
+
+// ES6 CLASS more info - https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/apA.md

@@ -208,6 +208,6 @@ a "DMZ" object like ø = Object.create(null) is a good placeholder value
 that protects the global object from unintended side-effects.
 
 5.Instead of the four standard binding rules, ES6 arrow-functions use lexical scoping for
-this binding, which means they adopt the this binding (whatever it is) from its enclosing function call.
+this binding, which means they adopt the 'this' binding (whatever it is) from its enclosing function call.
 They are essentially a syntactic replacement of self = this in pre-ES6 coding.
  */
