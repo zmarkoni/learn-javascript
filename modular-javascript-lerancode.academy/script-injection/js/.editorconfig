@@ -1,0 +1,22 @@
+# see https://projects.netcentric.biz/wiki/display/FRONTEND/.editorconfig
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+trim_trailing_whitespace = true
+
+[*.{js,json,ts,pcss,css,scss,html,md,hbs}]
+indent_size = 2
+insert_final_newline = true
+
+[*.{java}]
+indent_size = 4
+
+[*.md]
+trim_trailing_whitespace = false
+indent_size = 4
+
+[.ncpsrc]
+indent_size = 2
