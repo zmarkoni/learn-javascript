@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- traceur.js by google for compiling ES6 -> ES5 -->
+    <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.2/system.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        System.import('./app.js');  // Important
+    </script>
+</head>
+    <body>
+        <div id="main">
+            <h1>Just run index.html to work!!!</h1>
+
+            <p>There are two important Rules, which you need to understand if you're working with ES6 Modules:
+            Modules are always in Strict Mode (no need to define "use strict")
+            Modules don't have a shared, global Scope.
+            Instead each Module has its own Scope</p>
+        </div>
+
+        <h2>Test basics</h2>
+        <button>button</button>
+
+        <h3>Great links</h3>
+        <ul>
+            <li>
+                <a href="https://github.com/zmarkoni/modern-js-cheatsheet" target="_blank">modern-js-cheatsheet</a>
+            </li>
+        </ul>
+
+        <!-- Basics -->
+        <script type="text/javascript" src="basics/test-basic.js"></script>
+        <!--<script type="text/javascript" src="basics/..."></script>-->
+
+        <!-- Modules are included in app.js -->
+    </body>
+</html>
