@@ -35,3 +35,13 @@ let j = 10;
 
 [j, i] = [i, j];
 //console.log(i, j);
+
+//Consider array destructuring for parameters:
+
+function foo( [ x, y ] ) {
+	console.log( x, y );
+}
+
+foo( [ 1, 2 ] );					// 1 2
+foo( [ 1 ] );						// 1 undefined
+foo( [] );							// undefined undefined
