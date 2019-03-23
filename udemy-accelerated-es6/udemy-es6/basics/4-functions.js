@@ -1,3 +1,30 @@
+// Starting with ES6, function declarations that occur inside of blocks are now specified to
+// be scoped to that block. Prior to ES6, the specification did not call for this,
+// but many implementations did it anyway. So now the specification meets reality.
+
+// (function IIFE(){
+// 	foo();					// works!
+//
+// 	function foo() {
+// 		console.log('foo is called');
+// 	}
+// })();
+//
+// foo(); // ReferenceError
+
+if (true) {
+	function foo() {
+		console.log( "1" );
+	}
+}
+else {
+	function foo() {
+		console.log( "2" );
+	}
+}
+
+foo();
+
 //====== old way =======
 
 function oldFunc() {
