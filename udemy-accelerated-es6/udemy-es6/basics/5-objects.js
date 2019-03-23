@@ -1,6 +1,9 @@
 //Object Literal Extensions
 
-//If object properties don't have values, it can pick up from variables with same name, which is very bad! But only if they are declared before this object
+// Concise Properties
+// https://github.com/getify/You-Dont-Know-JS/blob/master/es6%20%26%20beyond/ch2.md#concise-properties
+//If object properties don't have values, it can pick up from variables with same name, which is very bad!
+// But only if they are declared before this object
 
 let name = "Jeka";
 let age = 33;
@@ -39,3 +42,29 @@ console.log(newObj.lastName); // Markovic
 console.log(newObj[ lastNameField ] ); // Markovic
 console.log(newObj["first name"]); //Zoran
 
+// Concise Methods
+// In a similar spirit to concise properties we just examined, functions attached to properties in object literals also have a concise form, for convenience.
+
+// The old way:
+
+var o = {
+	x: function(){
+		// ..
+	},
+	y: function(){
+		// ..
+	}
+}
+
+// And as of ES6:
+var o1 = {
+	x() {
+		// ..
+	},
+	y() {
+		// ..
+	}
+}
+//Warning: While x() { .. } seems to just be shorthand for x: function(){ .. },
+// concise methods have special behaviors that their older counterparts don't;
+// specifically, the allowance for super (see "Object super" later in this chapter).
