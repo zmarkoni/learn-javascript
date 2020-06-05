@@ -1,3 +1,5 @@
+// https://github.com/getify/You-Dont-Know-JS/blob/master/es6%20%26%20beyond/ch3.md#classes
+
 class Person {
   constructor(name) {
     this.name = name;
