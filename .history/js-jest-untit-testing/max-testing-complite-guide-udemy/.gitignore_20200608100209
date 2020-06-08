@@ -1,0 +1,84 @@
+# Add your rules here #
+#######################
+
+compass/.sass-cache/*
+
+node_modules
+
+compressor/tmp/*
+!compressor/tmp/.gitkeep
+
+private/_cache/*
+!private/_cache/.gitkeep
+private/_logs/*
+!private/_logs/.gitkeep
+private/_services/*
+!private/_services/.gitkeep
+private/_session/*
+!private/_session/.gitkeep
+private/_tmp/*
+!private/_tmp/.gitkeep
+
+
+public/bower/*
+!public/bower/.gitkeep
+public/changelog/*
+!public/changelog/.gitkeep
+public/version.json
+
+vendor/*
+!vendor/.gitkeep
+composer.phar
+å
+public/css/*
+!public/css/.gitkeep
+!public/css/dist/.gitkeep
+
+public/img/sprites/*
+
+# Default GIT ignore rules #
+############################
+.svn
+.settings
+.blackhole
+.buildpath
+.project
+.export
+*~
+dummy.php
+
+# Compiled source #
+###################
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.save
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs #
+######################
+*.log
+
+# OS generated files #
+######################
+.DS_Store
+ehthumbs.db
+Thumbs.db
+.idea/*
+tests/_output/*
+# netBeans files #
+/nbproject/*

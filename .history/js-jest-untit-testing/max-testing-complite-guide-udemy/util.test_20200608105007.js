@@ -1,0 +1,14 @@
+const { generateText } = require('./util'); // mora ovako, ne sa import mada moze da se podesi
+
+test('should output name and age', () => {
+	const text = generateText('Max', 29);
+    expect(text).toBe('Zoki (29 years old)');
+    
+    const text = generateText('Jeka', 33);
+    expect(text).toBe('Jeka (33 years old)');
+});
+
+test('should output data-less text', () => {
+	const text = generateText('', null);
+	expect(text).toBe(' (null years old)');
+});
