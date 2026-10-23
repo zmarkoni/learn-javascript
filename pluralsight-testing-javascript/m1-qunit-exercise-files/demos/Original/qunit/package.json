@@ -27,6 +27,6 @@
   ],
   "main": "qunit/qunit.js",
   "devDependencies": {
-    "grunt": "0.3.x"
+    "grunt": "1.6.x"
   }
 }
